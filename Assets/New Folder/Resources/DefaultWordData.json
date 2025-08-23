@@ -1,0 +1,124 @@
+{
+  "months": [
+    {
+      "month": "January",
+      "weeks": [
+        ["Snow", "Frost", "Chill", "Blanket", "Scarf"],
+        ["New", "Goal", "Fresh", "Plan", "Change"],
+        ["Fire", "Tea", "Cozy", "Gloves", "Boots"],
+        ["Sled", "Ice", "Wrap", "Hike", "Night"],
+        ["Steam", "Dark", "Cold", "Shine", "Breeze"]
+      ]
+    },
+    {
+      "month": "February",
+      "weeks": [
+        ["Love", "Gift", "Card", "Hearts", "Roses"],
+        ["Snow", "Candle", "Cozy", "Soup", "Blanket"],
+        ["Hug", "Sweet", "Date", "Flame", "Pink"],
+        ["Leap", "Short", "Month", "Smile", "Poem"],
+        ["Frost", "Snug", "Chill", "Glove", "Light"]
+      ]
+    },
+    {
+      "month": "March",
+      "weeks": [
+        ["Green", "Clover", "Luck", "Spring", "Plant"],
+        ["Rain", "Thaw", "Wind", "Melt", "Birds"],
+        ["Bloom", "Seed", "Roots", "Garden", "Fresh"],
+        ["Buds", "Tree", "Nest", "Leaf", "Warmth"],
+        ["Earth", "Worm", "Petal", "Sprout", "Cloud"]
+      ]
+    },
+    {
+      "month": "April",
+      "weeks": [
+        ["Fools", "Jokes", "Laugh", "Smile", "Happy"],
+        ["Rain", "Boots", "Drop", "Wet", "Storm"],
+        ["Tulip", "Bloom", "Grass", "Daisy", "Bees"],
+        ["Bunny", "Egg", "Color", "Chick", "Hop"],
+        ["Buzz", "Pond", "Green", "Shine", "Field"]
+      ]
+    },
+    {
+      "month": "May",
+      "weeks": [
+        ["Mom", "Gift", "Love", "Care", "Hug"],
+        ["Sun", "Shine", "Warm", "Blue", "Sky"],
+        ["Trail", "Walk", "Leaf", "Park", "Camp"],
+        ["Petal", "Bee", "Fresh", "Tree", "Picnic"],
+        ["Dance", "Joy", "Bright", "Open", "Laugh"]
+      ]
+    },
+    {
+      "month": "June",
+      "weeks": [
+        ["Leaf", "Tree", "Green", "Soil", "Grass"],
+        ["Climb", "Trail", "Rock", "Root", "Hill"],
+        ["Creek", "Camp", "Berry", "Wood", "Shade"],
+        ["Track", "Echo", "Nest", "Moss", "Trunk"],
+        ["Hike", "Beach", "Sunset", "Light", "Stone"]
+      ]
+    },
+    {
+      "month": "July",
+      "weeks": [
+        ["Moon", "Heat", "Hot", "Wave", "Cloud"],
+        ["Hand", "Shell", "Beach", "Shore", "Float"],
+        ["Swim", "Ice", "Sail", "Bright", "Fruit"],
+        ["Rain", "Sky", "Glow", "Wind", "Storm"],
+        ["Flash", "Flame", "Stone", "Drift", "Fog"]
+      ]
+    },
+    {
+      "month": "August",
+      "weeks": [
+        ["Heat", "Dry", "Sun", "Shade", "Sweat"],
+        ["Lake", "Fish", "Float", "Dive", "Wave"],
+        ["Camp", "Bug", "Ant", "Leaf", "Tent"],
+        ["Fire", "Song", "Sky", "Star", "Sing"],
+        ["Fruit", "Flip", "Chill", "Snack", "Glare"]
+      ]
+    },
+    {
+      "month": "September",
+      "weeks": [
+        ["Books", "Apple", "Bell", "Class", "Pupil"],
+        ["Leaf", "Fall", "Wind", "Brown", "Chill"],
+        ["Pencil", "Desk", "Board", "Write", "Learn"],
+        ["Harvest", "Read", "Note", "Sharp", "Snack"],
+        ["Rake", "Sweater", "Cider", "Acorn", "Golden"]
+      ]
+    },
+    {
+      "month": "October",
+      "weeks": [
+        ["Ghost", "Witch", "Pumpkin", "Mask", "Creep"],
+        ["Treat", "Trick", "Fog", "Broom", "Scare"],
+        ["Spider", "Web", "Candle", "Moon", "Haunt"],
+        ["Dark", "Night", "Bats", "Bones", "Black"],
+        ["Chill", "Grave", "Howl", "Owl", "Lantern"]
+      ]
+    },
+    {
+      "month": "November",
+      "weeks": [
+        ["Feast", "Thank", "Meal", "Family", "Share"],
+        ["Pie", "Corn", "Gravy", "Stuff", "Full"],
+        ["Leaves", "Fall", "Chill", "Cool", "Cider"],
+        ["Table", "Grace", "Story", "Kind", "Gather"],
+        ["Blanket", "Read", "Wood", "Log", "Sleep"]
+      ]
+    },
+    {
+      "month": "December",
+      "weeks": [
+        ["Snow", "Gift", "Tree", "Santa", "Bell"],
+        ["Wrap", "Cold", "Star", "Elf", "Joy"],
+        ["Fire", "Sock", "Wish", "Frost", "Chime"],
+        ["Light", "Hope", "Sing", "Magic", "Sweet"],
+        ["Merry", "Bright", "Year", "Toast", "Smile"]
+      ]
+    }
+  ]
+}
