@@ -1,10 +1,8 @@
 fileFormatVersion: 2
-guid: c14679c7c9549c9419d30ea2ebe538ed
-timeCreated: 1755974054
-licenseType: Free
+guid: 95a0f33cbb7bfc740b31c5022bb8bfb1
 TrueTypeFontImporter:
-  serializedVersion: 4
   externalObjects: {}
+  serializedVersion: 4
   fontSize: 16
   forceTextureCase: -2
   characterSpacing: 0
@@ -13,13 +11,11 @@ TrueTypeFontImporter:
   fontNames:
   - Stormfaze
   fallbackFontReferences: []
-  customCharacters:
+  customCharacters: 
   fontRenderingMode: 0
-  output:
-    hasEmptyFontData: 0
   ascentCalculationMode: 1
   useLegacyBoundsCalculation: 0
   shouldRoundAdvanceValue: 1
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
