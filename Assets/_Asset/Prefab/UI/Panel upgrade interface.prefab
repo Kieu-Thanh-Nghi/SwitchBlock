@@ -449,8 +449,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -754, y: 208.27821}
-  m_SizeDelta: {x: 85.4694, y: 67.4438}
+  m_AnchoredPosition: {x: -753.0596, y: 204.82997}
+  m_SizeDelta: {x: 87.3503, y: 60.5473}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3407433599781159087
 CanvasRenderer:
@@ -482,8 +482,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a3905230ec5b2124bab29ed07224ebc3, type: 2}
-  m_sharedMaterial: {fileID: 2414423645233879658, guid: a3905230ec5b2124bab29ed07224ebc3, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bfec1e03be8cb6e4f969673a6a2caa14, type: 2}
+  m_sharedMaterial: {fileID: -843556965635976294, guid: bfec1e03be8cb6e4f969673a6a2caa14, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -892,7 +892,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 7s
+  m_text: 4s
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1056,6 +1056,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1440570304274803625, guid: 74fb91e1e4501714eb449544738048fe, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -0.00013733
+      objectReference: {fileID: 0}
+    - target: {fileID: 1440570304274803625, guid: 74fb91e1e4501714eb449544738048fe, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000022888184
+      objectReference: {fileID: 0}
+    - target: {fileID: 1440570304274803630, guid: 74fb91e1e4501714eb449544738048fe, type: 3}
+      propertyPath: m_fontSize
+      value: 123.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1440570304274803630, guid: 74fb91e1e4501714eb449544738048fe, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: bfec1e03be8cb6e4f969673a6a2caa14, type: 2}
+    - target: {fileID: 1440570304274803630, guid: 74fb91e1e4501714eb449544738048fe, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 123.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1440570304274803630, guid: 74fb91e1e4501714eb449544738048fe, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -843556965635976294, guid: bfec1e03be8cb6e4f969673a6a2caa14, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74fb91e1e4501714eb449544738048fe, type: 3}
 --- !u!224 &3407433599741688184 stripped

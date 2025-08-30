@@ -170,8 +170,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 313.63, y: -5.5825}
-  m_SizeDelta: {x: 1072.1392, y: 71.5855}
+  m_AnchoredPosition: {x: 313.63, y: -10.4057}
+  m_SizeDelta: {x: 1072.1392, y: 86.0551}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1356640757196664500
 CanvasRenderer:
@@ -203,8 +203,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: MAGNET UPGRADE
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a3905230ec5b2124bab29ed07224ebc3, type: 2}
-  m_sharedMaterial: {fileID: 2414423645233879658, guid: a3905230ec5b2124bab29ed07224ebc3, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bfec1e03be8cb6e4f969673a6a2caa14, type: 2}
+  m_sharedMaterial: {fileID: -843556965635976294, guid: bfec1e03be8cb6e4f969673a6a2caa14, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -228,8 +228,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 66.47
-  m_fontSizeBase: 66.47
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -415,8 +415,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: adbd3aee2b4e55b48baee4bee9ddbab8, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: d03a86c6c0f0a4b4a8a3dfa9aacbcf5a, type: 2}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
