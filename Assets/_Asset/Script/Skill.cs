@@ -1,23 +1,14 @@
 ﻿using System.IO;
 using UnityEngine;
-public class Skill : MonoBehaviour
+using System;
+
+[Serializable]
+public class Skill
 {
-    [SerializeField] protected int Quantity = 0;
-    [SerializeField] protected int level = 1;
-    [SerializeField] protected int diamondForOneUse = 150;
-    protected string jsonFile;
-    protected int effDuration;
-
-    protected int[] effDurationPerLvl;
-    [SerializeField] protected int[] DiamondForEachLvl = { 250, 250, 250, 250, 250 };
-
-    public virtual void Config(string path)
-    {
-        
-    }
-
-    public virtual void EffActive()
-    {
-
-    }
+    [SerializeField] internal int Quantity = 0;
+    [SerializeField] internal int level = 1;
+    [SerializeField] internal int diamondForOneUse = 150;
+    [SerializeField] internal virtual int effDuration => 0;
+    [SerializeField] internal virtual int[] effDurationPerLvl => null;
+    [SerializeField] internal int[] DiamondForEachLvl = { 250, 250, 250, 250, 250 };
 }
