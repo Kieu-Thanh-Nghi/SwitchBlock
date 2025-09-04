@@ -1968,10 +1968,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 228785692}
-  - component: {fileID: 228785691}
-  - component: {fileID: 228785690}
-  - component: {fileID: 228785689}
-  - component: {fileID: 228785688}
+  - component: {fileID: 228785693}
   m_Layer: 0
   m_Name: Data
   m_TagString: Untagged
@@ -1979,75 +1976,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &228785688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 228785687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c64e46b05e5087c4fb0eab9dbc073386, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Quantity: 0
-  level: 1
-  diamondForOneUse: 150
-  DiamondForEachLvl: fa000000fa000000fa000000fa000000fa000000
-  effDuration: 6
-  effDurationPerLvl: 0700000008000000090000000a0000000b000000
---- !u!114 &228785689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 228785687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f3a2fd28da20ac4bab209352e725917, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Quantity: 0
-  level: 1
-  diamondForOneUse: 150
-  DiamondForEachLvl: fa000000fa000000fa000000fa000000fa000000
-  effDuration: 4
-  effDurationPerLvl: 0500000006000000070000000800000009000000
---- !u!114 &228785690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 228785687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8b619e7847ce0d4aba97f4ea8b1f560, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Quantity: 0
-  level: 1
-  diamondForOneUse: 150
-  DiamondForEachLvl: fa000000fa000000fa000000fa000000fa000000
-  effDuration: 7
-  effDurationPerLvl: 08000000090000000a0000000b0000000c000000
---- !u!114 &228785691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 228785687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32601f3d78462a549be28025a585b1c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  magnet: {fileID: 228785690}
-  rocket: {fileID: 228785689}
-  x2Mutiplier: {fileID: 228785688}
 --- !u!4 &228785692
 Transform:
   m_ObjectHideFlags: 0
@@ -2063,6 +1991,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &228785693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228785687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd7b24220c7c5548af782dff57bf6ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData:
+    diamond: 0
+    magnet:
+      Quantity: 0
+      level: 1
+      diamondForOneUse: 150
+      DiamondForEachLvl: fa000000fa000000fa000000fa000000fa000000
+    rocket:
+      Quantity: 0
+      level: 1
+      diamondForOneUse: 150
+      DiamondForEachLvl: fa000000fa000000fa000000fa000000fa000000
+    x2Mutiplier:
+      Quantity: 0
+      level: 1
+      diamondForOneUse: 150
+      DiamondForEachLvl: fa000000fa000000fa000000fa000000fa000000
 --- !u!1 &253981484
 GameObject:
   m_ObjectHideFlags: 0
