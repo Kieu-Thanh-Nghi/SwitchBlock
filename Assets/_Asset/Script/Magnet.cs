@@ -4,6 +4,9 @@ using System;
 [Serializable]
 public class Magnet : Skill
 {
-    [SerializeField] internal override int effDuration => 7;
-    [SerializeField] internal override int[] effDurationPerLvl => new int[] { 8, 9, 10, 11, 12 };
+    public Magnet()
+    {
+        effDuration = 7;
+        effDurationPerLvl = new int[] { 8, 9, 10, 11, 12 };
+    }
 }

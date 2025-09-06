@@ -5,7 +5,7 @@ using UnityEngine;
 [Serializable]
 public class PlayerData
 {
-    [SerializeField] int diamond = 0;
+    [SerializeField] internal int diamond = 0;
     GameObject usingBox;
     [SerializeField] internal Magnet magnet = new();
     [SerializeField] internal Rocket rocket = new();
