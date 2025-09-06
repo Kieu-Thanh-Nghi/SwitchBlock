@@ -3,15 +3,21 @@ using UnityEngine;
 
 public class DiamondUpdate : MonoBehaviour
 {
-    [SerializeField] LoadData data;
+    [SerializeField] Buysell buysell;
     private void OnEnable()
     {
         diamondsUpdate();
+        buysell.DoWhenDiamondChange += diamondsUpdate;
     }
 
     public void diamondsUpdate()
     {
         TMP_Text highScoreText = GetComponent<TMP_Text>();
-        highScoreText.text = data.playerData.diamond.ToString();
+        highScoreText.text = buysell.currentDiamond().ToString();
+    }
+
+    private void OnDisable()
+    {
+        buysell.DoWhenDiamondChange -= diamondsUpdate;
     }
 }

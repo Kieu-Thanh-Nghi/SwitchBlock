@@ -5,7 +5,8 @@ using UnityEngine;
 public class UIContrler : MonoBehaviour
 {
     [SerializeField] GameObject howToPlay, 
-        statistics, settings, upgrades;
+        statistics, settings, upgrades,
+        skinStore;
     internal void OnOffGameSound()
     {
 
@@ -29,9 +30,13 @@ public class UIContrler : MonoBehaviour
     {
         statistics.SetActive(true);
     }
+    public void PopupSkinStore()
+    {
+        skinStore.SetActive(true);
+    }
     internal void QuitGame()
     {
-
+        
     }
     
     public void QuitTheUI(GameObject theUI)
