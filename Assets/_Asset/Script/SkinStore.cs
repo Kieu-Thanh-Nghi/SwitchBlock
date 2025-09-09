@@ -11,9 +11,13 @@ public class SkinStore : MonoBehaviour
     private void Reset()
     {
         skins = GetComponentsInChildren<Skin>();
+        int i = 0;
         foreach(var skin in skins)
         {
             skinStates.states.Add(skin.skinState);
+            skin.setStore(this);
+            skin.index = i;
+            i++;
         }
 
         string skinDataJson = JsonUtility.ToJson(skinStates);
@@ -31,6 +35,11 @@ public class SkinStore : MonoBehaviour
             skin.SetupState(skinStates.states[i]);
             i++;
         }
+    }
+
+    public void UnlockSkin(Skin theSkin)
+    {
+
     }
 }
 

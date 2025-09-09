@@ -1,4 +1,4 @@
-Shader "UI/Additive" {
+Shader "UI/Additive1" {
 	Properties {
 		_MainTex ("Sprite Texture", 2D) = "white" {}
 		_Color ("Tint", Vector) = (1,1,1,1)
