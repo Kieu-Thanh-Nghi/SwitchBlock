@@ -36,4 +36,16 @@ public class Buysell : MonoBehaviour
     {
         Debug.Log("removing add");
     }
+
+    public bool WatchAD()
+    {
+        Debug.Log("Da xem quang cao");
+        return true;
+    }
+
+    public bool PayMoney()
+    {
+        Debug.Log("Da tra tien");
+        return true;
+    }
 }

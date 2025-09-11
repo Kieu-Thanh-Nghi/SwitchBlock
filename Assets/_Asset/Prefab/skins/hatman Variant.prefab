@@ -25,12 +25,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 349075036101725917}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0048276377, y: 1.0877097, z: 0}
-  m_LocalScale: {x: 1.5429503, y: 1.5599058, z: 0}
+  m_LocalPosition: {x: -0.004827675, y: 1.0877097, z: 0}
+  m_LocalScale: {x: 1.5429503, y: 1.5599059, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4028649395840023502}
-  m_RootOrder: 1
+  m_Father: {fileID: 4001850500141182704}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7505719893315235207
 SpriteRenderer:
@@ -109,12 +109,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4883852103273957625}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.003345766, y: -0.14618945, z: 0}
-  m_LocalScale: {x: 1.7490364, y: 1.785925, z: 0}
+  m_LocalPosition: {x: 0.0033457293, y: -0.14619058, z: 0}
+  m_LocalScale: {x: 1.7490364, y: 1.7859251, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4028649395840023502}
-  m_RootOrder: 2
+  m_Father: {fileID: 4001850500141182704}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2850520316647433896
 SpriteRenderer:
@@ -193,12 +193,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8897946915987170247}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.01010563, y: -0.7907912, z: 0}
+  m_LocalPosition: {x: 0.010105595, y: -0.79079235, z: 0}
   m_LocalScale: {x: 1.2699331, y: 1.2111049, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4028649395840023502}
-  m_RootOrder: 3
+  m_Father: {fileID: 4001850500141182704}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2507433151451632175
 SpriteRenderer:
@@ -309,12 +309,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2181940234436868584, guid: 1b0115f5b762ce7439e50c93c547dea6, type: 3}
       propertyPath: m_Name
-      value: hatman
+      value: hatman Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b0115f5b762ce7439e50c93c547dea6, type: 3}
---- !u!4 &4028649395840023502 stripped
+--- !u!4 &4001850500141182704 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2181940234436868119, guid: 1b0115f5b762ce7439e50c93c547dea6, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2172425524087713065, guid: 1b0115f5b762ce7439e50c93c547dea6, type: 3}
   m_PrefabInstance: {fileID: 3003738579430999001}
   m_PrefabAsset: {fileID: 0}

@@ -11,4 +11,10 @@ public class ActiveWithSkinState : MonoBehaviour
         if (currentState != StateToActive) return;
         gameObject.SetActive(true);
     }
+
+    public void UnActiveThis(int theState)
+    {
+        if (theState != StateToActive) return;
+        gameObject.SetActive(false);
+    }
 }

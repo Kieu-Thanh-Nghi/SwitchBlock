@@ -42,6 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2172425524087713065}
   - component: {fileID: 2016511628183431120}
+  - component: {fileID: 3986062828140621998}
   m_Layer: 5
   m_Name: SkinImage
   m_TagString: Untagged
@@ -116,3 +117,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
+--- !u!114 &3986062828140621998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7799037032935939395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 638fb73bd758c7e4f86d4491a952be0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

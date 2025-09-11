@@ -4,21 +4,24 @@ public class Skin : MonoBehaviour
 {
     [SerializeField] internal int skinState; //0.active 1.owned 2.WatchAD 3.PayMoney
     [SerializeField] internal int index;
-    [SerializeField] SkinStore store;
+    SkinStore store;
 
     public void setStore(SkinStore theStore)
     {
         store = theStore;
     }
-    public void SetupState(int theState)
+    public void SetupState(int theState, bool setNew = false)
     {
-        skinState = theState;
         ActiveWithSkinState[] theActives = GetComponentsInChildren<ActiveWithSkinState>(includeInactive: true);
-        Debug.Log(theActives.Length);
         foreach(var theActive in theActives)
         {
-            theActive.ActiveThis(skinState);
+            theActive.ActiveThis(theState);
+            if (setNew)
+            {
+                theActive.UnActiveThis(skinState);
+            }
         }
+        skinState = theState;
     }
 
     public void ChangeSkin()

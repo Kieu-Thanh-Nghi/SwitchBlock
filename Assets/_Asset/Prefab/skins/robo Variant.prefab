@@ -192,14 +192,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6971729180805670434}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0045647, y: 0.17082672, z: 0}
-  m_LocalScale: {x: 0.98989135, y: 0.98999, z: 0}
+  m_LocalPosition: {x: 0.0045646634, y: 0.17082676, z: 0}
+  m_LocalScale: {x: 0.98989135, y: 0.98999006, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4342348212310425713}
   - {fileID: 5449306952344933084}
-  m_Father: {fileID: 6490908868031270413}
-  m_RootOrder: 1
+  m_Father: {fileID: 6518285006260886323}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4923446134922425882
 PrefabInstance:
@@ -258,12 +258,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2181940234436868584, guid: 1b0115f5b762ce7439e50c93c547dea6, type: 3}
       propertyPath: m_Name
-      value: robo
+      value: robo Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b0115f5b762ce7439e50c93c547dea6, type: 3}
---- !u!4 &6490908868031270413 stripped
+--- !u!4 &6518285006260886323 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2181940234436868119, guid: 1b0115f5b762ce7439e50c93c547dea6, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2172425524087713065, guid: 1b0115f5b762ce7439e50c93c547dea6, type: 3}
   m_PrefabInstance: {fileID: 4923446134922425882}
   m_PrefabAsset: {fileID: 0}
