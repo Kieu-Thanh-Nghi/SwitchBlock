@@ -21,7 +21,12 @@ public class Buysell : MonoBehaviour
         Debug.Log("having more diamonds");
         AddDiamonds(100);
     }
-
+    public bool PayWithDiamonds(int diamondsQuantity)
+    {
+        if (data.playerData.diamond < diamondsQuantity) return false;
+        AddDiamonds(-diamondsQuantity);
+        return true;
+    }
     public void ShowAchivement()
     {
         Debug.Log("showing achivement");

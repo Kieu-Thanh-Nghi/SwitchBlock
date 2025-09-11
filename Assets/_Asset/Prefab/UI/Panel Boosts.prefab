@@ -615,6 +615,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6855681753417900167}
   - component: {fileID: 5420616673867903082}
+  - component: {fileID: 8196001811092198496}
   m_Layer: 5
   m_Name: Panel Boosts
   m_TagString: Untagged
@@ -653,6 +654,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7453222240458212556}
   m_CullTransparentMesh: 1
+--- !u!114 &8196001811092198496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7453222240458212556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4b21616c0fbb24aa89a00103e474dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillIndex: 0
+  useTimes: {fileID: 5762306759391003821}
 --- !u!1001 &6251110123094219474
 PrefabInstance:
   m_ObjectHideFlags: 0
