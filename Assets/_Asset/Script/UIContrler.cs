@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class UIContrler : MonoBehaviour
@@ -7,6 +6,17 @@ public class UIContrler : MonoBehaviour
     [SerializeField] GameObject howToPlay, 
         statistics, settings, upgrades,
         skinStore;
+
+    public void ToGamePlay()
+    {
+        SceneManager.LoadScene("GamePlay");
+    }
+
+    [ContextMenu("aa")]
+    public void ToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
     internal void OnOffGameSound()
     {
 

@@ -4651,6 +4651,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: devil
       objectReference: {fileID: 0}
+    - target: {fileID: 6387274971810837435, guid: 1b0115f5b762ce7439e50c93c547dea6, type: 3}
+      propertyPath: skinWhenBlackGround
+      value: 
+      objectReference: {fileID: 21300000, guid: aca04884e2e66d14e93bbd1c5dd06279, type: 3}
+    - target: {fileID: 6387274971810837435, guid: 1b0115f5b762ce7439e50c93c547dea6, type: 3}
+      propertyPath: skinWhenWhiteGround
+      value: 
+      objectReference: {fileID: 21300000, guid: aca04884e2e66d14e93bbd1c5dd06279, type: 3}
+    - target: {fileID: 6387274971810837435, guid: 1b0115f5b762ce7439e50c93c547dea6, type: 3}
+      propertyPath: colorWhenBlackGround.b
+      value: 0.078431375
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387274971810837435, guid: 1b0115f5b762ce7439e50c93c547dea6, type: 3}
+      propertyPath: colorWhenBlackGround.g
+      value: 0.18823531
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387274971810837435, guid: 1b0115f5b762ce7439e50c93c547dea6, type: 3}
+      propertyPath: colorWhenBlackGround.r
+      value: 0.7843138
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387274971810837435, guid: 1b0115f5b762ce7439e50c93c547dea6, type: 3}
+      propertyPath: colorWhenWhiteGround.b
+      value: 0.078431375
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387274971810837435, guid: 1b0115f5b762ce7439e50c93c547dea6, type: 3}
+      propertyPath: colorWhenWhiteGround.g
+      value: 0.18823531
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387274971810837435, guid: 1b0115f5b762ce7439e50c93c547dea6, type: 3}
+      propertyPath: colorWhenWhiteGround.r
+      value: 0.7843138
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b0115f5b762ce7439e50c93c547dea6, type: 3}
 --- !u!4 &916787355230179166 stripped

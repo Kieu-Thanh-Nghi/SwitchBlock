@@ -63,5 +63,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: panda
       objectReference: {fileID: 0}
+    - target: {fileID: 6387274971810837435, guid: 1b0115f5b762ce7439e50c93c547dea6, type: 3}
+      propertyPath: skinWhenBlackGround
+      value: 
+      objectReference: {fileID: 21300000, guid: 1ffd3d4097fd9f046b50a54c13f45f29, type: 3}
+    - target: {fileID: 6387274971810837435, guid: 1b0115f5b762ce7439e50c93c547dea6, type: 3}
+      propertyPath: skinWhenWhiteGround
+      value: 
+      objectReference: {fileID: 21300000, guid: aa6260e49577f1b42951e134379ec243, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b0115f5b762ce7439e50c93c547dea6, type: 3}

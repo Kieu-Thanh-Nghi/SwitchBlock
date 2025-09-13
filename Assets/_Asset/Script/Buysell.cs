@@ -5,6 +5,10 @@ public class Buysell : MonoBehaviour
 {
     [SerializeField] LoadData data;
     public Action DoWhenDiamondChange;
+    public Action DoAfterAD;
+    public Action DoAfterPayMoney;
+    int[] skinPrices = { 0,0,0,0,15000,15000,30000,30000,30000,30000,
+    91000,91000,91000,91000,91000,91000,91000};
 
     public int currentDiamond()
     {
@@ -42,15 +46,22 @@ public class Buysell : MonoBehaviour
         Debug.Log("removing add");
     }
 
-    public bool WatchAD()
+    public void WatchAD(bool refressAfterDone = false)
     {
         Debug.Log("Da xem quang cao");
-        return true;
+        DoAfterAD?.Invoke();
+        if (refressAfterDone) DoAfterAD = null;
     }
 
-    public bool PayMoney()
+    public void PayMoney(int cost, bool refressAfterDone = false)
     {
-        Debug.Log("Da tra tien");
-        return true;
+        Debug.Log("Da tra tien: " + cost + " dong");
+        DoAfterPayMoney?.Invoke();
+        if (refressAfterDone) DoAfterPayMoney = null;
+    }
+
+    public void PayMoneyForSkin(Skin theSkin, bool refressAfterDone = false)
+    {
+        PayMoney(skinPrices[theSkin.index], refressAfterDone);
     }
 }

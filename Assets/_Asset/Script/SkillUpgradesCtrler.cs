@@ -9,9 +9,6 @@ public class SkillUpgradesCtrler : MonoBehaviour
     [SerializeField] Image CurrentButtonImage;
     [SerializeField] LoadData data;
     [SerializeField] Buysell buysell;
-
-
-
     PlayerData playerData;
     SkillUpgrade[] listOfUpGrade;
     SkillBoosts[] listOfBoosts;
@@ -62,29 +59,36 @@ public class SkillUpgradesCtrler : MonoBehaviour
         switch (aBoosts.skillIndex)
         {
             case 0:
-                BoostsIt(aBoosts, playerData.magnet, withWhat);
+                boostsIt(aBoosts, playerData.magnet, withWhat);
                 break;
             case 1:
-                BoostsIt(aBoosts, playerData.rocket, withWhat);
+                boostsIt(aBoosts, playerData.rocket, withWhat);
                 break;
             case 2:
-                BoostsIt(aBoosts, playerData.x2Mutiplier, withWhat);
+                boostsIt(aBoosts, playerData.x2Mutiplier, withWhat);
                 break;
         }
     }
-    void BoostsIt(SkillBoosts aBoosts, Skill aSkill, int withWhat)
+    void boostsIt(SkillBoosts aBoosts, Skill aSkill, int withWhat)
     {
         switch (withWhat)
         {
             case 0:
-                if (aSkill.level > (aSkill.DiamondForEachLvl.Length)) return;
-                if (!buysell.PayWithDiamonds(aSkill.DiamondForEachLvl[aSkill.level - 1])) return;
+                if (!buysell.PayWithDiamonds(aSkill.diamondForOneUse)) return;
+                DoneBoosts(aBoosts, aSkill);
+                break;
+            case 1:
+                buysell.DoAfterAD += delegate ()
+                {
+                    DoneBoosts(aBoosts, aSkill);
+                };
+                buysell.WatchAD(true);
                 break;
         }
-        if (aSkill.level > (aSkill.DiamondForEachLvl.Length)) return;
-        if (!buysell.PayWithDiamonds(aSkill.DiamondForEachLvl[aSkill.level - 1])) return;
-        aSkill.level++;
-        aSkill.effDuration = aSkill.effDurationPerLvl[aSkill.level - 1];
+    }
+    void DoneBoosts(SkillBoosts aBoosts, Skill aSkill)
+    {
+        aSkill.Quantity++;
         data.SavePlayerData();
         setupBoosts(aBoosts, aSkill);
     }
@@ -133,8 +137,8 @@ public class SkillUpgradesCtrler : MonoBehaviour
     {
         if (aSkill.level > (aSkill.DiamondForEachLvl.Length)) return;
         if(!buysell.PayWithDiamonds(aSkill.DiamondForEachLvl[aSkill.level - 1])) return;
-        aSkill.level++;
         aSkill.effDuration = aSkill.effDurationPerLvl[aSkill.level - 1];
+        aSkill.level++;
         data.SavePlayerData();
         setupUpgrade(aUpgrade, aSkill);
     }

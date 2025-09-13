@@ -258,7 +258,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1559826363006335345}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8196001811092198496}
+        m_TargetAssemblyTypeName: SkillBoosts, Assembly-CSharp
+        m_MethodName: ClickToBoosts
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5965378459999204302
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,6 +778,34 @@ PrefabInstance:
     - target: {fileID: 1440570303884055482, guid: 74fb91e1e4501714eb449544738048fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1440570303884055483, guid: 74fb91e1e4501714eb449544738048fe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1440570303884055483, guid: 74fb91e1e4501714eb449544738048fe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1440570303884055483, guid: 74fb91e1e4501714eb449544738048fe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8196001811092198496}
+    - target: {fileID: 1440570303884055483, guid: 74fb91e1e4501714eb449544738048fe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1440570303884055483, guid: 74fb91e1e4501714eb449544738048fe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClickToBoosts
+      objectReference: {fileID: 0}
+    - target: {fileID: 1440570303884055483, guid: 74fb91e1e4501714eb449544738048fe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SkillBoosts, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1440570303884055483, guid: 74fb91e1e4501714eb449544738048fe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1440570304274803625, guid: 74fb91e1e4501714eb449544738048fe, type: 3}
       propertyPath: m_SizeDelta.y

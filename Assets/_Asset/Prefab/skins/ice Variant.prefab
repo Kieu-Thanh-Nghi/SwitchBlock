@@ -2333,6 +2333,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: ice
       objectReference: {fileID: 0}
+    - target: {fileID: 6387274971810837435, guid: 1b0115f5b762ce7439e50c93c547dea6, type: 3}
+      propertyPath: skinWhenBlackGround
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387274971810837435, guid: 1b0115f5b762ce7439e50c93c547dea6, type: 3}
+      propertyPath: skinWhenWhiteGround
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387274971810837435, guid: 1b0115f5b762ce7439e50c93c547dea6, type: 3}
+      propertyPath: colorWhenBlackGround.b
+      value: 0.76470596
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387274971810837435, guid: 1b0115f5b762ce7439e50c93c547dea6, type: 3}
+      propertyPath: colorWhenBlackGround.g
+      value: 0.6156863
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387274971810837435, guid: 1b0115f5b762ce7439e50c93c547dea6, type: 3}
+      propertyPath: colorWhenBlackGround.r
+      value: 0.30980393
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387274971810837435, guid: 1b0115f5b762ce7439e50c93c547dea6, type: 3}
+      propertyPath: colorWhenWhiteGround.b
+      value: 0.76470596
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387274971810837435, guid: 1b0115f5b762ce7439e50c93c547dea6, type: 3}
+      propertyPath: colorWhenWhiteGround.g
+      value: 0.61960787
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387274971810837435, guid: 1b0115f5b762ce7439e50c93c547dea6, type: 3}
+      propertyPath: colorWhenWhiteGround.r
+      value: 0.3137255
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b0115f5b762ce7439e50c93c547dea6, type: 3}
 --- !u!4 &5518660358516392476 stripped

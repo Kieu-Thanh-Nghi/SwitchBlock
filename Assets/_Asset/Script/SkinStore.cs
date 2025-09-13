@@ -6,16 +6,18 @@ using System.Collections;
 
 public class SkinStore : MonoBehaviour
 {
-    [SerializeField] string path;
+    [SerializeField] LoadData data;
+    [SerializeField] internal string path;
     [SerializeField] Buysell buysell;
     [SerializeField] internal Skin[] skins;
     [SerializeField] SkinStates skinStates;
-    Skin usingSkin;
+    Skin usingSkin, newSkinSelected;
+    string fileName = "SkinData.json";
 
     [ContextMenu("setup")]
-    private void Setup()
+    internal void Setup()
     {
-        path = Path.Combine(Application.persistentDataPath, "SkinData.json");
+        path = Path.Combine(Application.persistentDataPath, fileName);
         skinStates.states.Clear();
         skins = GetComponentsInChildren<Skin>();
         int i = 0;
@@ -23,6 +25,7 @@ public class SkinStore : MonoBehaviour
         {
             skinStates.states.Add(skin.skinState);
             skin.index = i;
+            if (skin.skinState == 0) skinStates.usingSkinIndex = i;
             i++;
         }
         saveSkinData();
@@ -35,43 +38,36 @@ public class SkinStore : MonoBehaviour
         File.WriteAllText(path, skinDataJson);
     }
 
-    private void Awake()
-    {
-        path = Path.Combine(Application.persistentDataPath, "SkinData.json");
-        if (File.Exists(path)) return;
-        Setup();
-    }
-
-    private void Start()
+    public void config()
     {
         string skinDataJson = File.ReadAllText(path);
         skinStates = JsonUtility.FromJson<SkinStates>(skinDataJson);
         int i = 0;
         foreach (var skin in skins)
         {
-            if(skinStates.states[i] == 0)
-            {
-                usingSkin = skin;
-                Debug.Log(usingSkin);
-            }
             skin.SetupState(skinStates.states[i]);
             skin.setStore(this);
             i++;
         }
+        usingSkin = skins[skinStates.usingSkinIndex];
+        data.SetUpNewPlayerSkin(skins[skinStates.usingSkinIndex].GetComponentInChildren<SkinToPlay>());
     }
 
     public void UnlockSkin(Skin theSkin)
     {
-        switch (theSkin.skinState)
+        newSkinSelected = theSkin;
+        switch (newSkinSelected.skinState)
         {
             case 1:
-                UseNewSkin(theSkin);
+                UseNewSkin(newSkinSelected);
                 break;
             case 2:
-                StartCoroutine(AfterAD(theSkin));
+                buysell.DoAfterAD += DoAfter;
+                buysell.WatchAD(true);
                 break;
             case 3:
-                StartCoroutine(AfterPayment(theSkin));
+                buysell.DoAfterPayMoney += DoAfter;
+                buysell.PayMoneyForSkin(theSkin, true);
                 break;
         }
     }
@@ -83,17 +79,14 @@ public class SkinStore : MonoBehaviour
         newSkin.SetupState(0, true);
         skinStates.states[newSkin.index] = 0;
         usingSkin = newSkin;
+        skinStates.usingSkinIndex = newSkin.index;
+        data.SetUpNewPlayerSkin(skins[newSkin.index].GetComponentInChildren<SkinToPlay>());
         saveSkinData();
     }
-    IEnumerator AfterAD(Skin newSkin)
+
+    void DoAfter()
     {
-        yield return new WaitUntil(() => buysell.WatchAD());
-        UseNewSkin(newSkin);
-    }
-    IEnumerator AfterPayment(Skin newSkin)
-    {
-        yield return new WaitUntil(() => buysell.PayMoney());
-        UseNewSkin(newSkin);
+        UseNewSkin(newSkinSelected);
     }
 }
 
@@ -101,6 +94,5 @@ public class SkinStore : MonoBehaviour
 class SkinStates
 {
     [SerializeField] internal List<int> states = new();
-    [SerializeField] int[] prices = { 0,0,0,0,15000,15000,30000,30000,30000,30000,
-    91000,91000,91000,91000,91000,91000,91000};
+    [SerializeField] internal int usingSkinIndex;
 }
