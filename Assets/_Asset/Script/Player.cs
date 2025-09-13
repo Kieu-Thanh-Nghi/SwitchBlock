@@ -5,15 +5,16 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] SkinToPlay skin;
-    SkinImage skinImage;
+    [SerializeField] SkinImage skinImage;
     [SerializeField] GameObject spriteMask, blink;
-
+    [SerializeField] SpriteRenderer skinSprite;
     public static Player Instance { get; private set; }
     internal void SetSkin(SkinToPlay theSkin)
     {
         skin = theSkin;
         skinImage = theSkin.GetComponentInChildren<SkinImage>();
         skinImage.transform.localScale = Vector3.one;
+        skinSprite = skinImage.GetComponent<SpriteRenderer>();
     }
 
     private void Awake()
@@ -23,5 +24,17 @@ public class Player : MonoBehaviour
             Destroy(Instance.gameObject);
         }
         Instance = this;
+    }
+
+    internal void SwitchEff(bool isBlack)
+    {
+        if (isBlack && skin.skinWhenWhiteGround != null)
+        {
+            skinSprite.sprite = skin.skinWhenWhiteGround;
+        }
+        if (!isBlack && skin.skinWhenBlackGround != null)
+        {
+            skinSprite.sprite = skin.skinWhenBlackGround;
+        }
     }
 }

@@ -7,8 +7,7 @@ public class LoadData : MonoBehaviour
     [SerializeField] string path;
     [SerializeField] string statisticsPath;
     [SerializeField] SkinStore store;
-    [SerializeField] GameObject currentPlayer;
-    [SerializeField] GameObject currentSkin;
+    [SerializeField] SetupPlayer setupPlayer;
     [SerializeField] internal PlayerData playerData;
     [SerializeField] internal StatisticData statistics;
 
@@ -21,11 +20,7 @@ public class LoadData : MonoBehaviour
 
     internal void SetUpNewPlayerSkin(SkinToPlay skinToPlay)
     {
-        GameObject newSkin = Instantiate(skinToPlay.gameObject, currentPlayer.transform);
-        newSkin.transform.localScale = currentSkin.transform.localScale;
-        Destroy(currentSkin);
-        currentSkin = newSkin;
-        currentPlayer.GetComponent<Player>().SetSkin(currentSkin.GetComponent<SkinToPlay>());
+        setupPlayer.SetUpNewPlayerSkin(skinToPlay);
     }
 
     [ContextMenu("SetUp")]
@@ -63,10 +58,6 @@ public class LoadData : MonoBehaviour
 
     private void Awake()
     {
-        if (!File.Exists(store.path))
-        {
-            store.Setup();
-        }
         path = Path.Combine(Application.persistentDataPath, "Data.json");
         if (!File.Exists(path))
         {
@@ -78,12 +69,14 @@ public class LoadData : MonoBehaviour
             SaveStatisticsData();
         }
         Config();
-        store?.config();
-        if (Instance != null && Instance != this)
+        if(store != null)
         {
-            Destroy(Instance.gameObject);
+            if (!File.Exists(store.path))
+            {
+                store.Setup();
+            }
+            store.config();
         }
-        Instance = this;
     }
 }
 
