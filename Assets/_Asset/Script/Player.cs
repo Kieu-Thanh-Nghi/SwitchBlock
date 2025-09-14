@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] new ParticleSystem particleSystem;
+    [SerializeField] GameObject spriteMask, blink;
     [SerializeField] SkinToPlay skin;
     [SerializeField] SkinImage skinImage;
-    [SerializeField] GameObject spriteMask, blink;
     [SerializeField] SpriteRenderer skinSprite;
     public static Player Instance { get; private set; }
     internal void SetSkin(SkinToPlay theSkin)
@@ -28,6 +29,12 @@ public class Player : MonoBehaviour
 
     internal void SwitchEff(bool isBlack)
     {
+        switchSkinImage(isBlack);
+        switchParticleColor(isBlack);
+    }
+
+    void switchSkinImage(bool isBlack)
+    {
         if (isBlack && skin.skinWhenWhiteGround != null)
         {
             skinSprite.sprite = skin.skinWhenWhiteGround;
@@ -36,5 +43,12 @@ public class Player : MonoBehaviour
         {
             skinSprite.sprite = skin.skinWhenBlackGround;
         }
+    }
+
+    void switchParticleColor(bool isBlack)
+    {
+        var particleSystemMain = particleSystem.main;
+        if (isBlack) particleSystemMain.startColor = skin.colorWhenWhiteGround;
+        else particleSystemMain.startColor = skin.colorWhenBlackGround;
     }
 }
