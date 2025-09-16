@@ -11,6 +11,7 @@ public class GamePlayCtrler : MonoBehaviour
     [SerializeField] Player player;
     [SerializeField] ObstacleSpawner obstacleSpawner;
     public float speedOfObstacle;
+    public float ObstacleSpawnTime = 1;
 
     public static GamePlayCtrler Instance { get; private set; }
 
