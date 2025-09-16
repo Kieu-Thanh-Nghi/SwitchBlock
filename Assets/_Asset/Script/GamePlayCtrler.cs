@@ -6,10 +6,38 @@ public class GamePlayCtrler : MonoBehaviour
 {
     [SerializeField] bool switchState = false;
     [SerializeField] SpriteRenderer backGround;
-    [SerializeField] Color swithStateBlack, switchStateWhite;
+    [SerializeField] internal Color switchStateBlack, switchStateWhite;
+    [SerializeField] float baseObstacleSpeed;
+    [SerializeField] Player player;
+    [SerializeField] ObstacleSpawner obstacleSpawner;
+    public float speedOfObstacle;
+
+    public static GamePlayCtrler Instance { get; private set; }
+
+    private void Awake()
+    {
+        Instance = this;
+        SetDefaultSpeed();
+    }
+
+    internal void SetPlayer(Player thePlayer)
+    {
+        player = thePlayer;
+    }
+    public void SetDefaultSpeed()
+    {
+        speedOfObstacle = baseObstacleSpeed;
+    }
 
     [ContextMenu("switch test")]
     internal void UseSwitchState()
+    {
+        switchBackGround();
+        player.SwitchEff(switchState);
+        obstacleSpawner.SwitchObstacles();
+    }
+
+    void switchBackGround()
     {
         switchState = !switchState;
         if (switchState)
@@ -18,8 +46,7 @@ public class GamePlayCtrler : MonoBehaviour
         }
         else
         {
-            backGround.color = swithStateBlack;
+            backGround.color = switchStateBlack;
         }
-        Player.Instance.SwitchEff(switchState);
     }
 }

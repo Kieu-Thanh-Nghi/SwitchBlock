@@ -7,16 +7,10 @@ public class SetupPlayer : MonoBehaviour
     [SerializeField] GameObject currentPlayer;
     [SerializeField] GameObject currentSkin;
 
-    public static SetupPlayer Instance { get; private set; }
-
     private void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(Instance.gameObject);
-        }
-        Instance = this;
         DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(currentPlayer);
     }
     internal void SetUpNewPlayerSkin(SkinToPlay skinToPlay)
     {
@@ -25,7 +19,6 @@ public class SetupPlayer : MonoBehaviour
         Destroy(currentSkin);
         currentSkin = newSkin;
         currentPlayer.GetComponent<Player>().SetSkin(currentSkin.GetComponent<SkinToPlay>());
-        DontDestroyOnLoad(currentPlayer);
     }
 
     public void ToGamePlay()
@@ -36,7 +29,9 @@ public class SetupPlayer : MonoBehaviour
 
     IEnumerator waitToActivePlayer()
     {
-        yield return new WaitUntil(() => SceneManager.GetActiveScene().buildIndex == 1);
+        yield return new WaitUntil(() => SceneManager.GetActiveScene().buildIndex == 1 &&
+                                         GamePlayCtrler.Instance != null);
         currentPlayer.SetActive(true);
+        Destroy(gameObject);
     }
 }
