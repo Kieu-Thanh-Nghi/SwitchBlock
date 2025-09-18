@@ -7,10 +7,12 @@ public class Obstacle : MonoBehaviour
     [SerializeField] PartOfObstacle[] parts;
     [SerializeField] int n;
     [SerializeField] float min_length = 0.15f, max_length = (1f / 3f);
+    GamePlayCtrler gamePlayCtrler;
 
     private void Start()
     {
         n = parts.Length;
+        gamePlayCtrler = GamePlayCtrler.Instance;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -18,6 +20,14 @@ public class Obstacle : MonoBehaviour
         if (collision.CompareTag("Lastpoint"))
         {
             gameObject.SetActive(false);
+        }
+    }    
+    
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            gamePlayCtrler.PassingObstacleUpdate();
         }
     }
 

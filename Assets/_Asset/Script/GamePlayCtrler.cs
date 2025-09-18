@@ -11,8 +11,14 @@ public class GamePlayCtrler : MonoBehaviour
     [SerializeField] Player player;
     [SerializeField] internal ObstacleSpawner obstacleSpawner;
     [SerializeField] internal ItemSpawner itemSpawner;
+    [SerializeField] internal float secondToAddPoint = 0.5f;
+    [SerializeField] float speedBonusEachState = 1;
+    [SerializeField] int ObstacleMustPassForNextState = 27;
+    int ObstacleHasPass = 0;
     public float speedOfObstacle;
     public float ObstacleSpawnTime = 1;
+    internal int PlayerPoint = 0;
+    int state = 1;
 
     public static GamePlayCtrler Instance { get; private set; }
 
@@ -20,6 +26,23 @@ public class GamePlayCtrler : MonoBehaviour
     {
         Instance = this;
         SetDefaultSpeed();
+    }
+
+    internal void PassingObstacleUpdate()
+    {
+        ObstacleHasPass++;
+        Debug.Log(ObstacleHasPass);
+        if(ObstacleHasPass > ObstacleMustPassForNextState)
+        {
+            ObstacleHasPass = 0;
+            nextState();
+        }
+    }
+
+    void nextState()
+    {
+        state++;
+        speedOfObstacle += speedBonusEachState;
     }
 
     internal void SetPlayer(Player thePlayer)

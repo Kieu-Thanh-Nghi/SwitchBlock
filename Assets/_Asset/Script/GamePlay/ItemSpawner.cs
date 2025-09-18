@@ -21,7 +21,6 @@ public class ItemSpawner : MonoBehaviour
     {
         if (collision.CompareTag("obstacle"))
         {
-            Debug.Log("ss");
             ActiveSpawnItem();
         }
     }
