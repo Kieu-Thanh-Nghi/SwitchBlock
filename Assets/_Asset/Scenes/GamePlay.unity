@@ -1201,7 +1201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   switchState: 0
   backGround: {fileID: 1605268449}
-  switchStateBlack: {r: 0, g: 0, b: 0, a: 0}
+  switchStateBlack: {r: 0, g: 0, b: 0, a: 1}
   switchStateWhite: {r: 1, g: 1, b: 1, a: 1}
   baseObstacleSpeed: 5
   player: {fileID: 1896990952}
@@ -1209,7 +1209,7 @@ MonoBehaviour:
   itemSpawner: {fileID: 1746285868}
   secondToAddPoint: 0.25
   speedBonusEachState: 1
-  ObstacleMustPassForNextState: 27
+  ObstacleMustPassForNextState: 10
   speedOfObstacle: 0
   ObstacleSpawnTime: 1.3
 --- !u!4 &584097033
@@ -1554,6 +1554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   midpoint: {fileID: 1299923911}
   obstaclePrefab: {fileID: 1581259938249675558, guid: e1609e662a6c2104daf18d0f399d5b80, type: 3}
+  changeStateObstaclePrefab: {fileID: 4040146661090295636, guid: f05b46b5bac14194e94a4f063fa9437d, type: 3}
 --- !u!1 &821115822
 GameObject:
   m_ObjectHideFlags: 0

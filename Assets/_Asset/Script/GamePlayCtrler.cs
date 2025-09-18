@@ -43,6 +43,7 @@ public class GamePlayCtrler : MonoBehaviour
     {
         state++;
         speedOfObstacle += speedBonusEachState;
+        obstacleSpawner.ToNewState();
     }
 
     internal void SetPlayer(Player thePlayer)
@@ -52,6 +53,14 @@ public class GamePlayCtrler : MonoBehaviour
     public void SetDefaultSpeed()
     {
         speedOfObstacle = baseObstacleSpeed;
+    }
+
+    internal void DoItemEff(int itemIndex)
+    {
+        if(itemIndex == 2)
+        {
+            UseSwitchState();
+        }
     }
 
     [ContextMenu("switch test")]

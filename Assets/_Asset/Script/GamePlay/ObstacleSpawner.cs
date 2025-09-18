@@ -7,12 +7,18 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] Queue<Obstacle> obstacles = new();
     [SerializeField] Transform midpoint;
     [SerializeField] Obstacle obstaclePrefab;
+    [SerializeField] Obstacle changeStateObstaclePrefab;
     ItemSpawner itemSpawner;
 
     private void Start()
     {
         itemSpawner = GamePlayCtrler.Instance.itemSpawner;
         InvokeRepeating(nameof(spawnAnObstacle), 0, GamePlayCtrler.Instance.ObstacleSpawnTime);
+    }
+
+    internal void ToNewState()
+    {
+
     }
 
     void spawnAnObstacle()
