@@ -9,6 +9,10 @@ public class PartOfObstacle : MonoBehaviour
     [SerializeField] internal SpriteRenderer partColor;
     [SerializeField] internal BoxCollider2D aPartCollider;
 
+    internal bool IsHavingCollider()
+    {
+        return aPartCollider.enabled;
+    }
     internal void SwitchAPart()
     {
         aPartCollider.enabled = !aPartCollider.enabled;

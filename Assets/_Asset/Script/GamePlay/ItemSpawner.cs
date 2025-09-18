@@ -1,21 +1,28 @@
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class ItemSpawner : MonoBehaviour
 {
     [SerializeField] Item itemPrefab;
     [SerializeField] List<ItemSample> itemSamples;
-    Queue<Item> itemQueue;
-    Item nextItem;
-    internal bool isActive;
-    float plusPointSpawnTime;
-    float startingSpawnTime;
-    int maxSpawnAmount = 2;
-    int spawnAmount;
-    int remainItems = 0;
-    int totalWeight;
-    int currentTotalWeight;
+    [SerializeField] Transform startPoint, leftPoint, rightPoint;
+    [SerializeField] float spawnCountDown;
+    [SerializeField] internal bool isActive;
+    Queue<Item> itemQueue = new();
+    [SerializeField] float plusPointSpawnTime, startingSpawnTime;
+    int maxSpawnAmount = 2, spawnAmount;
+    int totalWeight, currentTotalWeight;
     int usedSampleIndex = -1;
+    internal Action ItemMove;
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("obstacle"))
+        {
+            ActiveSpawnItem();
+        }
+    }
 
     private void Awake()
     {
@@ -27,21 +34,45 @@ public class ItemSpawner : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void Start()
+    {
+        InvokeRepeating(nameof(spawnLoop), 0, spawnCountDown);
+    }
+
+    //private void Update()
+    //{
+    //    if (isActive && spawnAmount > 0)
+    //    {
+    //        if (Time.time - startingSpawnTime < plusPointSpawnTime)
+    //        {
+    //            if(usedSampleIndex < 0) spawnPlusPoint();
+    //        }
+    //        else
+    //        {
+    //            if (spawnAmount < maxSpawnAmount) Invoke(nameof(spawnOtherItems), spawnCountDown);
+    //            else spawnOtherItems();
+    //        }
+    //    }
+    //}
+
+    void spawnLoop()
     {
         if (isActive && spawnAmount > 0)
         {
             if (Time.time - startingSpawnTime < plusPointSpawnTime)
             {
-                spawnPlusPoint();
+                if (usedSampleIndex < 0) spawnPlusPoint();
             }
             else
             {
                 spawnOtherItems();
             }
-            spawnAmount--;
         }
-        moveItems();
+    }
+
+    private void FixedUpdate()
+    {
+        ItemMove?.Invoke();
     }
 
     internal void ActiveSpawnItem()
@@ -50,22 +81,30 @@ public class ItemSpawner : MonoBehaviour
         spawnAmount = maxSpawnAmount;
         startingSpawnTime = Time.time;
         currentTotalWeight = totalWeight;
+        usedSampleIndex = -1;
+    }
+
+    internal void DeActiveSpawnItem()
+    {
+        isActive = false;
     }
 
     void spawnPlusPoint()
     {
-        int plusPointSpawnChance = Random.Range(0, 10);
-        if(plusPointSpawnChance > 6)
+        int plusPointSpawnChance = UnityEngine.Random.Range(0, 10);
+        Debug.Log(plusPointSpawnChance);
+        if(plusPointSpawnChance > 7)
         {
             spawnAnItem(itemSamples[0]);
+            usedSampleIndex = 0;
         }
     }
 
     void spawnOtherItems()
     {
-        int randomResult = Random.Range(0, currentTotalWeight);
+        int randomResult = UnityEngine.Random.Range(0, currentTotalWeight);
         int sum = 0;
-        for(int i = 0; i < itemSamples.Count; i++)
+        for(int i = 1; i < itemSamples.Count; i++)
         {
             if (usedSampleIndex == i) continue;
             sum += itemSamples[i].weight;
@@ -81,32 +120,25 @@ public class ItemSpawner : MonoBehaviour
 
     void spawnAnItem(ItemSample itemSample)
     {
-        if (!(remainItems > 0))
+        Item anItem;
+        if (!(itemQueue.Count > 0))
         {
-            Item anItem = Instantiate(itemPrefab);
-            anItem.ItemSetUp(itemSample);
-            itemQueue.Enqueue(anItem);
+            anItem = Instantiate(itemPrefab, transform);
+            anItem.SetUpItemSpawner(this);
         }
         else
         {
-            nextItem.ItemSetUp(itemSample);
-            nextItem.gameObject.SetActive(true);
-            remainItems--;
+            anItem = itemQueue.Dequeue();
+            anItem.gameObject.SetActive(true);
         }
+        float newX = UnityEngine.Random.Range(leftPoint.localPosition.x, rightPoint.localPosition.x);
+        anItem.transform.localPosition = new Vector2(newX, 0);
+        anItem.ItemSetUp(itemSample);
+        spawnAmount--;
     }
 
     internal void ResetTheItem(Item theItem)
     {
-        theItem.gameObject.SetActive(false);
-        if(remainItems == 0)
-        {
-            nextItem = theItem;
-        }
-        remainItems++;
-    }
-
-    void moveItems()
-    {
-
+        itemQueue.Enqueue(theItem);
     }
 }

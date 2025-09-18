@@ -2,19 +2,28 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    [SerializeField] internal bool isStop;
+    [SerializeField] internal bool switchState = false;
     [SerializeField] Transform startpoint;
     [SerializeField] PartOfObstacle[] parts;
     [SerializeField] int n;
-    [SerializeField] float min_length = 0, max_length = (1f / 3f);
+    [SerializeField] float min_length = 0.15f, max_length = (1f / 3f);
 
     private void Start()
     {
         n = parts.Length;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Lastpoint"))
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
     internal void SwitchParts()
     {
+        switchState = !switchState;
         foreach(var part in parts)
         {
             part.SwitchAPart();
@@ -27,7 +36,7 @@ public class Obstacle : MonoBehaviour
     }
 
     [ContextMenu("sap xep parts")]
-    void arrangeParts()
+    internal void ArrangeParts()
     {
         partsSuffle();
         randomPartsLength();
@@ -37,14 +46,35 @@ public class Obstacle : MonoBehaviour
     [ContextMenu("random range")]
     void randomPartsLength()
     {
+        bool checkIsHavingCollider = false;
         float sumOfLength = 0;
         for (int i = 0; i < n-1; i++)
         {
+            checkIsHavingCollider = checkIsHavingCollider && parts[i].IsHavingCollider();
             float newRange = Random.Range(min_length, max_length);
-            parts[i].transform.localScale = new Vector3(newRange, parts[i].transform.localScale.y);
+            if(min_length > (1 - (sumOfLength + newRange)))
+            {
+                newRange = 1 - sumOfLength;
+            }
+            if(sumOfLength + newRange > 0.98f)
+            {
+                if (!checkIsHavingCollider)
+                {
+                    for(int j = i+1; j < n-1; j++)
+                    {
+                        if (parts[j].IsHavingCollider())
+                        {
+                            swapParts(i, j);
+                            checkIsHavingCollider = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            parts[i].transform.localScale = new Vector3(newRange, parts[i].transform.localScale.y);       
             sumOfLength += newRange;
+
         }
-        Debug.Log(1 - sumOfLength);
         if(sumOfLength < 1f)
         {
             parts[n-1].transform.localScale = new Vector3(1 - sumOfLength, parts[n - 1].transform.localScale.y);

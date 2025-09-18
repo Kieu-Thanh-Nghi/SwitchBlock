@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 1581259938249675576}
   - component: {fileID: 1581259938249675559}
   - component: {fileID: 1581259938249675558}
+  - component: {fileID: 1350836349097264814}
   m_Layer: 0
   m_Name: Obstacle
-  m_TagString: Untagged
+  m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1581259938249675577}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.62, y: 0, z: 0}
-  m_LocalScale: {x: 7.2, y: 0.56275654, z: 1}
+  m_LocalPosition: {x: 2.81645, y: 0, z: 0}
+  m_LocalScale: {x: 5.6328387, y: 0.56275654, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1581259938891412719}
@@ -102,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b74124133db9a0408ad3b5112f28454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  switchState: 0
   startpoint: {fileID: 0}
   parts:
   - {fileID: 421187143975557641}
@@ -110,8 +112,34 @@ MonoBehaviour:
   - {fileID: 421187143752059488}
   - {fileID: 1903536743045725956}
   n: 5
-  min_length: 0.13
+  min_length: 0.15
   max_length: 0.33333334
+--- !u!61 &1350836349097264814
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581259938249675577}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.379588}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.759176}
+  m_EdgeRadius: 0
 --- !u!1001 &739470384772149414
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -126,7 +154,7 @@ PrefabInstance:
     - target: {fileID: 1164630138372427682, guid: 2b68c8177e6c83d4aa35e919caee07de, type: 3}
       propertyPath: aPartCollider
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7439698788572268389}
     - target: {fileID: 2284138567597248324, guid: 2b68c8177e6c83d4aa35e919caee07de, type: 3}
       propertyPath: m_Color.b
       value: 0
@@ -221,6 +249,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be9e2dbc7d03e6d4c91c74f647ff724d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &7439698788572268389 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 7889249659561113539, guid: 2b68c8177e6c83d4aa35e919caee07de, type: 3}
+  m_PrefabInstance: {fileID: 739470384772149414}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1581259938812880930
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -440,7 +473,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2284138568033911881, guid: 2b68c8177e6c83d4aa35e919caee07de, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5027778
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2284138568033911881, guid: 2b68c8177e6c83d4aa35e919caee07de, type: 3}
       propertyPath: m_LocalPosition.y

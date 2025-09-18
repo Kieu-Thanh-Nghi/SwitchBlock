@@ -4,14 +4,50 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    [SerializeField] List<Obstacle> obstacles;
+    [SerializeField] Queue<Obstacle> obstacles = new();
+    [SerializeField] Transform midpoint;
     [SerializeField] Obstacle obstaclePrefab;
+    ItemSpawner itemSpawner;
 
-    void AddMoreObstacle()
+    private void Start()
     {
-        Obstacle anObstacle = Instantiate(obstaclePrefab);
-        obstacles.Add(anObstacle);
+        itemSpawner = GamePlayCtrler.Instance.itemSpawner;
+        InvokeRepeating(nameof(spawnAnObstacle), 0, GamePlayCtrler.Instance.ObstacleSpawnTime);
+    }
+
+    void spawnAnObstacle()
+    {
+
+        Obstacle anObstacle;
+        if (obstacles.Count == 0) 
+        {
+            anObstacle = AddMoreObstacle();
+        } 
+        else
+        {
+            anObstacle = activeObstacleInQueue();
+        }
+        if (GamePlayCtrler.Instance.switchState != anObstacle.switchState) anObstacle.SwitchParts();
+        anObstacle.transform.position = midpoint.position;
+        anObstacle.ArrangeParts();
+        itemSpawner.DeActiveSpawnItem();
+    }
+
+    Obstacle activeObstacleInQueue()
+    {
+        if (obstacles.Peek().gameObject.activeSelf) return AddMoreObstacle();
+        var anObstacle = obstacles.Dequeue();
+        obstacles.Enqueue(anObstacle);
+        anObstacle.gameObject.SetActive(true);
+        return anObstacle;
+    }
+
+    Obstacle AddMoreObstacle()
+    {
+        Obstacle anObstacle = Instantiate(obstaclePrefab, transform);
+        obstacles.Enqueue(anObstacle);
         anObstacle.SetStartPoint(transform);
+        return anObstacle;
     }
 
     internal void SwitchObstacles()
@@ -26,7 +62,7 @@ public class ObstacleSpawner : MonoBehaviour
     {
         foreach (var obstacle in obstacles)
         {
-            if (obstacle.isStop) continue;
+            if (!obstacle.gameObject.activeSelf) continue;
             obstacle.transform.position +=
                 -obstacle.transform.up * GamePlayCtrler.Instance.speedOfObstacle * Time.fixedDeltaTime;
         }

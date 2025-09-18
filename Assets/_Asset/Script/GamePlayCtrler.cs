@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class GamePlayCtrler : MonoBehaviour
 {
-    [SerializeField] bool switchState = false;
+    [SerializeField] internal bool switchState = false;
     [SerializeField] SpriteRenderer backGround;
     [SerializeField] internal Color switchStateBlack, switchStateWhite;
     [SerializeField] float baseObstacleSpeed;
     [SerializeField] Player player;
-    [SerializeField] ObstacleSpawner obstacleSpawner;
+    [SerializeField] internal ObstacleSpawner obstacleSpawner;
+    [SerializeField] internal ItemSpawner itemSpawner;
     public float speedOfObstacle;
     public float ObstacleSpawnTime = 1;
 
@@ -33,6 +34,7 @@ public class GamePlayCtrler : MonoBehaviour
     [ContextMenu("switch test")]
     internal void UseSwitchState()
     {
+        switchState = !switchState;
         switchBackGround();
         player.SwitchEff(switchState);
         obstacleSpawner.SwitchObstacles();
@@ -40,7 +42,6 @@ public class GamePlayCtrler : MonoBehaviour
 
     void switchBackGround()
     {
-        switchState = !switchState;
         if (switchState)
         {
             backGround.color = switchStateWhite;
