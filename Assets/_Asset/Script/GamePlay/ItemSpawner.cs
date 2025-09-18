@@ -5,12 +5,13 @@ using UnityEngine;
 public class ItemSpawner : MonoBehaviour
 {
     [SerializeField] Item itemPrefab;
+    [SerializeField] int noOtherItemPercent;
     [SerializeField] List<ItemSample> itemSamples;
     [SerializeField] Transform startPoint, leftPoint, rightPoint;
     [SerializeField] float spawnCountDown;
     [SerializeField] internal bool isActive;
     Queue<Item> itemQueue = new();
-    [SerializeField] float plusPointSpawnTime, startingSpawnTime;
+    [SerializeField] float plusPointSpawnTime, otherItemSpawnTime = 0;
     int maxSpawnAmount = 2, spawnAmount;
     int totalWeight, currentTotalWeight;
     int usedSampleIndex = -1;
@@ -20,6 +21,7 @@ public class ItemSpawner : MonoBehaviour
     {
         if (collision.CompareTag("obstacle"))
         {
+            Debug.Log("ss");
             ActiveSpawnItem();
         }
     }
@@ -27,17 +29,17 @@ public class ItemSpawner : MonoBehaviour
     private void Awake()
     {
         plusPointSpawnTime = GamePlayCtrler.Instance.ObstacleSpawnTime / 3f;
-        totalWeight = 0;
+        totalWeight = noOtherItemPercent;
         foreach (var itemSample in itemSamples)
         {
             totalWeight += itemSample.weight;
         }
     }
 
-    private void Start()
-    {
-        InvokeRepeating(nameof(spawnLoop), 0, spawnCountDown);
-    }
+    //private void Start()
+    //{
+    //    InvokeRepeating(nameof(spawnLoop), 0, spawnCountDown);
+    //}
 
     //private void Update()
     //{
@@ -55,20 +57,20 @@ public class ItemSpawner : MonoBehaviour
     //    }
     //}
 
-    void spawnLoop()
-    {
-        if (isActive && spawnAmount > 0)
-        {
-            if (Time.time - startingSpawnTime < plusPointSpawnTime)
-            {
-                if (usedSampleIndex < 0) spawnPlusPoint();
-            }
-            else
-            {
-                spawnOtherItems();
-            }
-        }
-    }
+    //void spawnLoop()
+    //{
+    //    if (isActive && spawnAmount > 0)
+    //    {
+    //        if (Time.time - startingSpawnTime < plusPointSpawnTime)
+    //        {
+    //            if (usedSampleIndex < 0) spawnPlusPoint();
+    //        }
+    //        else
+    //        {
+    //            spawnOtherItems();
+    //        }
+    //    }
+    //}
 
     private void FixedUpdate()
     {
@@ -79,42 +81,53 @@ public class ItemSpawner : MonoBehaviour
     {
         isActive = true;
         spawnAmount = maxSpawnAmount;
-        startingSpawnTime = Time.time;
         currentTotalWeight = totalWeight;
+        otherItemSpawnTime = plusPointSpawnTime;
         usedSampleIndex = -1;
+        int plusPointSpawnChance = UnityEngine.Random.Range(0, 10);
+        if (plusPointSpawnChance > 5)
+        {
+            spawnAmount--;
+            Invoke(nameof(spawnPlusPoint), UnityEngine.Random.Range(0f, plusPointSpawnTime));
+        }
+        for (int i = 0; i < spawnAmount; i++)
+        {
+            float bonusTime = 0;
+            if (i >= 1) bonusTime = spawnCountDown;
+            otherItemSpawnTime = UnityEngine.Random.Range(otherItemSpawnTime + bonusTime,
+                GamePlayCtrler.Instance.ObstacleSpawnTime - plusPointSpawnTime);
+            Invoke(nameof(spawnOtherItems), otherItemSpawnTime);
+        }
     }
 
     internal void DeActiveSpawnItem()
     {
         isActive = false;
+        CancelInvoke();
     }
 
     void spawnPlusPoint()
     {
-        int plusPointSpawnChance = UnityEngine.Random.Range(0, 10);
-        Debug.Log(plusPointSpawnChance);
-        if(plusPointSpawnChance > 7)
-        {
-            spawnAnItem(itemSamples[0]);
-            usedSampleIndex = 0;
-        }
+        usedSampleIndex = 0;
+        spawnAnItem(itemSamples[0]);
     }
 
     void spawnOtherItems()
     {
         int randomResult = UnityEngine.Random.Range(0, currentTotalWeight);
-        int sum = 0;
+        if (randomResult < noOtherItemPercent) return;
+        int sum = noOtherItemPercent;
         for(int i = 1; i < itemSamples.Count; i++)
         {
             if (usedSampleIndex == i) continue;
-            sum += itemSamples[i].weight;
-            if (randomResult > sum)
+            if (randomResult > sum && randomResult < sum + itemSamples[i].weight)
             {
+                usedSampleIndex = i;
                 spawnAnItem(itemSamples[i]);
                 currentTotalWeight = currentTotalWeight - itemSamples[i].weight;
-                usedSampleIndex = i;
                 return;
             }
+            sum += itemSamples[i].weight;
         }
     }
 
@@ -134,7 +147,6 @@ public class ItemSpawner : MonoBehaviour
         float newX = UnityEngine.Random.Range(leftPoint.localPosition.x, rightPoint.localPosition.x);
         anItem.transform.localPosition = new Vector2(newX, 0);
         anItem.ItemSetUp(itemSample);
-        spawnAmount--;
     }
 
     internal void ResetTheItem(Item theItem)

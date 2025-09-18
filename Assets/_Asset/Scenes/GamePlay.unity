@@ -7905,6 +7905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 4622139614357625195, guid: 126bb135a56437649b5757e202fa1cc5, type: 3}
+  noOtherItemPercent: 10
   itemSamples:
   - {fileID: 2603161113765481788, guid: a48f32a20025326499787f147c1cee0c, type: 3}
   - {fileID: 1794274175596256613, guid: b677360cc80adde40b07c23ef3d93bb5, type: 3}
@@ -7916,10 +7917,10 @@ MonoBehaviour:
   startPoint: {fileID: 1746285867}
   leftPoint: {fileID: 1734797216}
   rightPoint: {fileID: 523039125}
-  spawnCountDown: 0.1
+  spawnCountDown: 0.25
   isActive: 0
   plusPointSpawnTime: 0
-  startingSpawnTime: 0
+  otherItemSpawnTime: 0
 --- !u!50 &1746285869
 Rigidbody2D:
   serializedVersion: 4
