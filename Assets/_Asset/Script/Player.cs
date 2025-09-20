@@ -8,19 +8,16 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject spriteMask, blink;
     [SerializeField] SkinToPlay skin;
     [SerializeField] SkinImage skinImage;
-    [SerializeField] SpriteRenderer skinSprite;
+    [SerializeField] internal SpriteRenderer skinSprite;
 
-    private void Awake()
-    {
-        if (GamePlayCtrler.Instance != null)
-            GamePlayCtrler.Instance.SetPlayer(this);
-    }
     internal void SetSkin(SkinToPlay theSkin)
     {
         skin = theSkin;
         skinImage = theSkin.GetComponentInChildren<SkinImage>();
         skinImage.transform.localScale = Vector3.one;
         skinSprite = skinImage.GetComponent<SpriteRenderer>();
+        var particleSystemMain = particleSystem.main;
+        particleSystemMain.startColor = skin.colorWhenWhiteGround;
     }
 
     internal void SwitchEff(bool isBlack)

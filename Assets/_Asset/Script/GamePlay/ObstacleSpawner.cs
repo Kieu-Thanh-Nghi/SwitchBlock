@@ -9,21 +9,29 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] Obstacle obstaclePrefab;
     [SerializeField] Obstacle changeStateObstaclePrefab;
     ItemSpawner itemSpawner;
+    GamePlayCtrler gamePlayCtrler;
 
     private void Start()
     {
-        itemSpawner = GamePlayCtrler.Instance.itemSpawner;
-        InvokeRepeating(nameof(spawnAnObstacle), 0, GamePlayCtrler.Instance.ObstacleSpawnTime);
+        gamePlayCtrler = GamePlayCtrler.Instance;
+        itemSpawner = gamePlayCtrler.itemSpawner;
+        ActiveSpawnObstacle();
     }
 
     internal void ToNewState()
     {
+        CancelInvoke();
+        changeStateObstaclePrefab.gameObject.SetActive(true);
+    }
 
+    internal void DeActiveSpawner() => CancelInvoke();
+    internal void ActiveSpawnObstacle()
+    {
+        InvokeRepeating(nameof(spawnAnObstacle), 0, gamePlayCtrler.ObstacleSpawnTime);
     }
 
     void spawnAnObstacle()
     {
-
         Obstacle anObstacle;
         if (obstacles.Count == 0) 
         {
@@ -70,7 +78,7 @@ public class ObstacleSpawner : MonoBehaviour
         {
             if (!obstacle.gameObject.activeSelf) continue;
             obstacle.transform.position +=
-                -obstacle.transform.up * GamePlayCtrler.Instance.speedOfObstacle * Time.fixedDeltaTime;
+                -obstacle.transform.up * gamePlayCtrler.speedOfObstacle * Time.fixedDeltaTime;
         }
     }
 }

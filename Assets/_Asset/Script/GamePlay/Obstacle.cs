@@ -5,16 +5,26 @@ public class Obstacle : MonoBehaviour
     [SerializeField] internal bool switchState = false;
     [SerializeField] protected Transform startpoint;
     [SerializeField] protected PartOfObstacle[] parts;
+    [SerializeField] PartOfObstacle alternativePart;
     [SerializeField] protected int n;
-    [SerializeField] float min_length = 0.15f, max_length = (1f / 3f);
+    [SerializeField] float min_length = 0.15f;
+    Vector3 alternativePos;
+    float baseScaleY = 1;
+    float remain_length;
     protected GamePlayCtrler gamePlayCtrler;
 
+    private void Awake()
+    {
+        alternativePos = alternativePart.transform.position;
+        n = parts.Length;
+        remain_length = 1 - min_length * n;        
+    }
     private void Start()
     {
-        n = parts.Length;
         gamePlayCtrler = GamePlayCtrler.Instance;
+        gamePlayCtrler.DoWhenGameEnd += doWhenEndGame;
     }
-
+    void doWhenEndGame() => gameObject.SetActive(false);
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Lastpoint"))
@@ -25,10 +35,7 @@ public class Obstacle : MonoBehaviour
 
     protected virtual void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
-        {
-            gamePlayCtrler.PassingObstacleUpdate();
-        }
+
     }
 
     internal void SwitchParts()
@@ -37,6 +44,22 @@ public class Obstacle : MonoBehaviour
         foreach(var part in parts)
         {
             part.SwitchAPart();
+
+        }            
+        alternativePart.SwitchAPart();
+        swapToAlternative();
+    }
+
+    void swapToAlternative()
+    {
+        for (int i = 0; i < parts.Length; i++)
+        {
+            if (parts[i].IsHavingCollider() != alternativePart.IsHavingCollider())
+            {
+                var temp = alternativePart;
+                alternativePart = parts[i];
+                parts[i] = temp;
+            }
         }
     }
 
@@ -48,61 +71,56 @@ public class Obstacle : MonoBehaviour
     [ContextMenu("sap xep parts")]
     internal void ArrangeParts()
     {
+        alternativePart.transform.position = alternativePos;
+        alternativePart.transform.localScale = new Vector3(min_length, baseScaleY);
         partsSuffle();
+        CheckParts();
         randomPartsLength();
+        n = parts.Length;
         connectParts();
     }
 
     [ContextMenu("random range")]
     void randomPartsLength()
     {
-        bool checkIsHavingCollider = false;
-        bool checkIsHavingNonCollider = false;
-        float sumOfLength = 0;
-        for (int i = 0; i < n-1; i++)
+        float remainLength = remain_length;
+
+        for (int i = 0; i < n - 1; i++)
         {
-            checkIsHavingCollider = checkIsHavingCollider && parts[i].IsHavingCollider();
-            checkIsHavingNonCollider = checkIsHavingNonCollider && !parts[i].IsHavingCollider();
-            float newRange = Random.Range(min_length, max_length);
-            if(min_length > (1 - (sumOfLength + newRange)))
+            float bonusLength;
+            if (!parts[i].IsHavingCollider())
             {
-                newRange = 1 - sumOfLength;
+                bonusLength = Random.Range(0, remainLength / 2);
             }
-            if(sumOfLength + newRange > 0.98f)
+            else
             {
-                if (!checkIsHavingCollider)
+                bonusLength = Random.Range(remainLength / 2, remainLength);
+            }
+            
+            remainLength = remainLength - bonusLength;
+            parts[i].transform.localScale = new Vector3(min_length + bonusLength, baseScaleY);
+        }
+        parts[n-1].transform.localScale = new Vector3(min_length + remainLength, baseScaleY);
+    }
+
+    void CheckParts()
+    {
+        if(!parts[0].IsHavingCollider() && !parts[n-1].IsHavingCollider() && parts[n-2].IsHavingCollider())
+        {
+            n = parts.Length;
+        }
+        else
+        {
+            if (parts[n - 1].IsHavingCollider())
+            {
+                for (int i = n-2; i >= 0; i--)
                 {
-                    for(int j = i+1; j < n-1; j++)
-                    {
-                        if (parts[j].IsHavingCollider())
-                        {
-                            swapParts(i, j);
-                            checkIsHavingCollider = true;
-                            break;
-                        }
-                    }
-                }                
-                if (!checkIsHavingCollider)
-                {
-                    for(int j = i+1; j < n-1; j++)
-                    {
-                        if (!parts[j].IsHavingCollider())
-                        {
-                            swapParts(i, j);
-                            checkIsHavingNonCollider = true;
-                            break;
-                        }
-                    }
+                    if (!parts[i].IsHavingCollider()) swapParts(i, n - 1);
                 }
             }
-            parts[i].transform.localScale = new Vector3(newRange, parts[i].transform.localScale.y);       
-            sumOfLength += newRange;
-
+            n = n - 1;
         }
-        if(sumOfLength < 1f)
-        {
-            parts[n-1].transform.localScale = new Vector3(1 - sumOfLength, parts[n - 1].transform.localScale.y);
-        }
+        remain_length = 1 - min_length * n;
     }
 
     void connectParts()

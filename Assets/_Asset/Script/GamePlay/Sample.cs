@@ -19,7 +19,7 @@ public class Sample : MonoBehaviour
         {
             item.DeActiveItem();
         }
-        if (collision.CompareTag("Player"))
+        else if (collision.CompareTag("Player"))
         {
             gamePlayCtrler.DoItemEff(itemIdex);
             item.DeActiveItem();

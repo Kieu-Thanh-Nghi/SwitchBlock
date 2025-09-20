@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Lastpoint
   - obstacle
+  - ChangeStateObstacle
+  - EndGame
   layers:
   - Default
   - TransparentFX

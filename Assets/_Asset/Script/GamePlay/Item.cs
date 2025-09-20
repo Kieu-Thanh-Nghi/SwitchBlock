@@ -12,6 +12,7 @@ public class Item : MonoBehaviour
     {
         this.itemSpawner = itemSpawner;
         itemSpawner.ItemMove += move;
+        GamePlayCtrler.Instance.DoWhenGameEnd += DeActiveItem;
     }
 
     internal void ItemSetUp(ItemSample itemSample)
@@ -25,10 +26,12 @@ public class Item : MonoBehaviour
 
     internal void DeActiveItem()
     {
-        sample.transform.SetParent(itemSpawner.transform, false);
-        sample.transform.localPosition = Vector3.zero;
-        itemSpawner.ResetTheItem(this);
+        if (!gameObject.activeSelf) return;
         theItemSample.ReturnSample(sample);
+        sample.transform.SetParent(itemSpawner.transform);
+        sample.transform.localPosition = Vector3.zero;
+        sample = null;
+        itemSpawner.ResetTheItem(this);
         gameObject.SetActive(false);
     }
 

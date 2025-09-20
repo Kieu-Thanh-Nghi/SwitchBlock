@@ -15,19 +15,27 @@ public class ItemSpawner : MonoBehaviour
     int maxSpawnAmount = 2, spawnAmount;
     int totalWeight, currentTotalWeight;
     int usedSampleIndex = -1;
+    GamePlayCtrler gamePlayCtrler;
     internal Action ItemMove;
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("obstacle"))
         {
+            gamePlayCtrler.PassingObstacleUpdate();
             ActiveSpawnItem();
+        }
+        if (collision.CompareTag("ChangeStateObstacle"))
+        {
+            gamePlayCtrler.nextState();
         }
     }
 
     private void Awake()
     {
-        plusPointSpawnTime = GamePlayCtrler.Instance.ObstacleSpawnTime / 3f;
+        isActive = true;
+        gamePlayCtrler = GamePlayCtrler.Instance;
+        plusPointSpawnTime = gamePlayCtrler.ObstacleSpawnTime / 3f;
         totalWeight = noOtherItemPercent;
         foreach (var itemSample in itemSamples)
         {
@@ -78,7 +86,7 @@ public class ItemSpawner : MonoBehaviour
 
     internal void ActiveSpawnItem()
     {
-        isActive = true;
+        if (!isActive) return;
         spawnAmount = maxSpawnAmount;
         currentTotalWeight = totalWeight;
         otherItemSpawnTime = plusPointSpawnTime;
@@ -94,14 +102,13 @@ public class ItemSpawner : MonoBehaviour
             float bonusTime = 0;
             if (i >= 1) bonusTime = spawnCountDown;
             otherItemSpawnTime = UnityEngine.Random.Range(otherItemSpawnTime + bonusTime,
-                GamePlayCtrler.Instance.ObstacleSpawnTime - plusPointSpawnTime);
+                gamePlayCtrler.ObstacleSpawnTime - plusPointSpawnTime);
             Invoke(nameof(spawnOtherItems), otherItemSpawnTime);
         }
     }
 
     internal void DeActiveSpawnItem()
     {
-        isActive = false;
         CancelInvoke();
     }
 

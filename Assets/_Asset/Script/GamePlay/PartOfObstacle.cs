@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PartOfObstacle : MonoBehaviour
 {
-    [SerializeField] bool isPartBlack;
+    [SerializeField] internal bool isPartBlack;
     [SerializeField] internal Transform tail;
     [SerializeField] internal SpriteRenderer partColor;
     [SerializeField] internal BoxCollider2D aPartCollider;
@@ -16,5 +16,13 @@ public class PartOfObstacle : MonoBehaviour
     internal void SwitchAPart()
     {
         aPartCollider.enabled = !aPartCollider.enabled;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            GamePlayCtrler.Instance.EndTheGame();
+        }
     }
 }
