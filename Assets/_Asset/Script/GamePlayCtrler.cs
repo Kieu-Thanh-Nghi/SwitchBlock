@@ -1,9 +1,15 @@
 using System;
 using UnityEngine;
+using System.Collections;
 
 public class GamePlayCtrler : MonoBehaviour
 {
+    [SerializeField] bool isImunity;
+
+    [SerializeField] Buysell buysell;
+    [SerializeField] LoadData data;
     [SerializeField] StatisticCounting statisticCounting;
+
     [SerializeField] internal bool switchState = false;
     [SerializeField] SpriteRenderer backGround;
     [SerializeField] internal Color switchStateBlack, switchStateWhite;
@@ -11,10 +17,17 @@ public class GamePlayCtrler : MonoBehaviour
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] internal ObstacleSpawner obstacleSpawner;
     [SerializeField] internal ItemSpawner itemSpawner;
+
+    [SerializeField] int numberOfDiamondCanAdd = 1;
+    [SerializeField] int bonusPointWhenTakeItem = 100;
+
     [SerializeField] int ObstacleMustPassForNextState = 27;
     [SerializeField] float baseObstacleSpeed;
     [SerializeField] float speedBonusEachState = 1;
+
     [SerializeField] GameObject ReviveUI, EndGameUI, GamePlayUI;
+    [SerializeField] CountDownUI countDown;
+
     public float speedOfObstacle;
     float speedTemp;
     int ObstacleHasPass = 0, totalObstacleHasPass = 0;
@@ -35,6 +48,7 @@ public class GamePlayCtrler : MonoBehaviour
 
     internal void EndTheGame()
     {
+        if (isImunity) return;
         Debug.Log(speedTemp);
         isEnd = true;
         Debug.Log("endgame");
@@ -123,10 +137,37 @@ public class GamePlayCtrler : MonoBehaviour
 
     internal void DoItemEff(int itemIndex)
     {
-        if(itemIndex == 2)
+        switch (itemIndex)
         {
-            UseSwitchState();
+            case 0:
+                statisticCounting.BonusPoint(bonusPointWhenTakeItem);
+                break;
+            case 1:
+                buysell.AddDiamonds(numberOfDiamondCanAdd,false);
+                break;
+            case 2:
+                UseSwitchState();
+                break;
+            case 3:
+                Invoke(nameof(EndTheGame), 0.15f);
+                break;
+            case 6:
+                float countTime = data.playerData.x2Mutiplier.effDuration;
+                if (!countDown.is2XCounting(countTime)) 
+                    StartCoroutine(Got2X(data.playerData.x2Mutiplier.effDuration));
+                break;
         }
+    }
+
+    IEnumerator Got2X(float seconds)
+    {
+        numberOfDiamondCanAdd *= 2;
+        bonusPointWhenTakeItem *= 2;
+        statisticCounting.plusPointEachTime *= 2;
+        yield return StartCoroutine(countDown.doWhenGot2X(seconds));
+        numberOfDiamondCanAdd /= 2;
+        bonusPointWhenTakeItem /= 2;
+        statisticCounting.plusPointEachTime /= 2;
     }
 
     [ContextMenu("switch test")]

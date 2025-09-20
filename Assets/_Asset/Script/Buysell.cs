@@ -14,10 +14,10 @@ public class Buysell : MonoBehaviour
     {
         return data.playerData.diamond;
     }
-    public void AddDiamonds(int diamonds)
+    public void AddDiamonds(int diamonds, bool hasSaved = true)
     {
         data.playerData.diamond += diamonds;
-        data.SavePlayerData();
+        if(hasSaved) data.SavePlayerData();
         DoWhenDiamondChange?.Invoke();
     }
     public void BuyDiamonds()

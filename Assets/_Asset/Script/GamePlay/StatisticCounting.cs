@@ -19,6 +19,11 @@ public class StatisticCounting : MonoBehaviour
     {
         PlayerPoint = startPoint;
     }
+    internal void BonusPoint(int bonus)
+    {
+        PlayerPoint += bonus;
+        DoWhenPointIcrease.Invoke();
+    }
     void OnEnable()
     {
         InvokeRepeating(nameof(countPoint), 0, secondToAddPoint);

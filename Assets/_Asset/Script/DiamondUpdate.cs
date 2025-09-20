@@ -4,15 +4,20 @@ using UnityEngine;
 public class DiamondUpdate : MonoBehaviour
 {
     [SerializeField] Buysell buysell;
+    TMP_Text highScoreText;
     private void OnEnable()
     {
-        diamondsUpdate();
         buysell.DoWhenDiamondChange += diamondsUpdate;
+        highScoreText = GetComponent<TMP_Text>();
+    }
+
+    private void Start()
+    {
+        diamondsUpdate();        
     }
 
     public void diamondsUpdate()
     {
-        TMP_Text highScoreText = GetComponent<TMP_Text>();
         highScoreText.text = buysell.currentDiamond().ToString();
     }
 
