@@ -152,10 +152,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44691b91a55551242ac1ee63a6ca9664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isImunity: 0
   particleSystem: {fileID: 620120398}
   particleWhenDiePrefab: {fileID: 1256040421098668171, guid: 28a9768b0cbca244f9e832596c78949b, type: 3}
   spriteMask: {fileID: 832164374}
   blink: {fileID: 1353960473}
+  blinkingDuration: 0.5
+  blinkTimes: 2
   magnet: {fileID: 1464402905}
   skin: {fileID: 853662172}
   skinImage: {fileID: 853662171}
@@ -1183,7 +1186,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fea55c93f51273c4289a8b42506e5aa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isImunity: 0
   buysell: {fileID: 584097036}
   data: {fileID: 825057967}
   statisticCounting: {fileID: 584097034}
