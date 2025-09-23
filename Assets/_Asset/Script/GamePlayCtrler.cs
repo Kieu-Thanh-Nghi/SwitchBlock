@@ -55,10 +55,10 @@ public class GamePlayCtrler : MonoBehaviour
         SetDefaultSpeed();
     }
 
-    private void Start()
-    {
-        StartCoroutine(StartGamePlay());
-    }
+    //private void Start()
+    //{
+    //    StartCoroutine(StartGamePlay());
+    //}
 
     IEnumerator StartGamePlay(bool isRivive = false)
     {
@@ -172,6 +172,8 @@ public class GamePlayCtrler : MonoBehaviour
     {
         player = thePlayer;
         playerMovement.player = thePlayer;
+        playerMovement.enabled = true;
+        StartCoroutine(StartGamePlay());
     }
     public void SetDefaultSpeed()
     {
