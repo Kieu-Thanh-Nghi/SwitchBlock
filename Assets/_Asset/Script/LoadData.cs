@@ -102,10 +102,13 @@ public class TimeData
     {
         TimeSpan temp = new(0, minutes, seconds);
         temp = temp + timeToAdd;
-        minutes = (int)temp.TotalMinutes;
-        seconds = temp.Seconds;
+        SetTime(temp);
     }
-
+    internal void SetTime(TimeSpan timeToSet)
+    {
+        minutes = (int)timeToSet.TotalMinutes;
+        seconds = timeToSet.Seconds;
+    }
     internal TimeSpan getTimeSpan()
     {
         return new TimeSpan(0, minutes, seconds);

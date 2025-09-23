@@ -4,25 +4,35 @@ using UnityEngine;
 
 public class Sample : MonoBehaviour
 {
-    [SerializeField] int itemIdex;
-    Item item;
-    GamePlayCtrler gamePlayCtrler;
+    [SerializeField] protected int itemIdex;
+    protected Item item;
+    protected GamePlayCtrler gamePlayCtrler;
     internal void SetUp(Item item)
     {
         this.item = item;
         gamePlayCtrler = GamePlayCtrler.Instance;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Lastpoint"))
         {
-            item.DeActiveItem();
+            ColloderWithLastPoint();
         }
         else if (collision.CompareTag("Player"))
         {
-            gamePlayCtrler.DoItemEff(itemIdex);
-            item.DeActiveItem();
+            ColloderWithPlayer();
         }
+    }
+
+    protected virtual void ColloderWithLastPoint()
+    {
+        item.DeActiveItem();
+    }    
+    
+    protected virtual void ColloderWithPlayer()
+    {
+        gamePlayCtrler.DoItemEff(itemIdex);
+        item.DeActiveItem();
     }
 }

@@ -8,6 +8,7 @@ TagManager:
   - obstacle
   - ChangeStateObstacle
   - EndGame
+  - Magnet
   layers:
   - Default
   - TransparentFX

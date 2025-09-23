@@ -6,18 +6,43 @@ public class StatisticCounting : MonoBehaviour
 {
     [SerializeField] internal int plusPointEachTime = 1;
     [SerializeField] internal float secondToAddPoint = 0.25f;
+    internal StatisticData statisticData;
     internal Action DoWhenPointIcrease;
     internal int PlayerPoint = 0;
+    float timeOfAGame;
     int startPoint = 0;
+    float timer;
 
     private void Awake()
     {
-        PlayerPoint = startPoint;
+        statisticData = GamePlayCtrler.Instance.data.statistics;
+        RestartPoint();
     }
 
+    void StartTimer() => timer = Time.time;
+    void StopTimer() => timeOfAGame = Time.time - timer;
+
+    internal void SaveStatistic()
+    {
+        TimeSpan gameTimeSpan = TimeSpan.FromSeconds(timeOfAGame);
+        if (PlayerPoint > statisticData.HighScore) statisticData.HighScore = PlayerPoint;
+        statisticData.TotalPlayTime.AddTime(gameTimeSpan);
+        if(gameTimeSpan > statisticData.HighestPlayTime.getTimeSpan())
+        {
+            statisticData.HighestPlayTime.SetTime(gameTimeSpan);
+        }
+        statisticData.NumberOfSessions++;
+        if(statisticData.NumberOfSessions > 0)
+        {
+            statisticData.AveragePlayTime.SetTime
+                (statisticData.TotalPlayTime.getTimeSpan() / statisticData.NumberOfSessions);
+        }
+        GamePlayCtrler.Instance.data.SaveStatisticsData();
+    }
     internal void RestartPoint()
     {
         PlayerPoint = startPoint;
+        StartTimer();
     }
     internal void BonusPoint(int bonus)
     {
@@ -38,5 +63,6 @@ public class StatisticCounting : MonoBehaviour
     private void OnDisable()
     {
         CancelInvoke();
+        StopTimer();
     }
 }

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 0
-  samplePrefab: {fileID: 2603161114739033576}
+  samplePrefab: {fileID: 1948616052546646396}
 --- !u!1 &2603161114739033583
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,7 +57,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2603161114739033577}
   - component: {fileID: 2603161114739033582}
-  - component: {fileID: 2603161114739033576}
+  - component: {fileID: 1948616052546646396}
   - component: {fileID: 1018830313696298090}
   - component: {fileID: 5381866352828885377}
   m_Layer: 0
@@ -134,7 +134,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2603161114739033576
+--- !u!114 &1948616052546646396
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,10 +143,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2603161114739033583}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b377a2271fac3be45803ef45edfc2a3c, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d39fef1f66c93940965a91838c36298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemIdex: 0
+  attractSpeed: 10
 --- !u!61 &1018830313696298090
 BoxCollider2D:
   m_ObjectHideFlags: 0

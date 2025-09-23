@@ -5,6 +5,7 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     [SerializeField] ItemSample theItemSample;
+    internal bool isStop;
     ItemSpawner itemSpawner;
     Sample sample;
 
@@ -37,7 +38,7 @@ public class Item : MonoBehaviour
 
     void move()
     {
-        if (!gameObject.activeSelf) return;
+        if (!gameObject.activeSelf || isStop) return;
         transform.position += -transform.up * GamePlayCtrler.Instance.speedOfObstacle * Time.fixedDeltaTime;
     }
 }

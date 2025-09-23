@@ -15,7 +15,7 @@ public class ObstacleSpawner : MonoBehaviour
     {
         gamePlayCtrler = GamePlayCtrler.Instance;
         itemSpawner = gamePlayCtrler.itemSpawner;
-        ActiveSpawnObstacle();
+        //ActiveSpawnObstacle();
     }
 
     internal void ToNewState()
