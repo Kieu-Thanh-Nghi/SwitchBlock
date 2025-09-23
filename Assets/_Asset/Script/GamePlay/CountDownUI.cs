@@ -88,4 +88,9 @@ public class CountDownUI : MonoBehaviour
         yield return new WaitUntil(() => effs[index].CountingDown());
         DoAfterCountDown(index);
     }
+
+    private void OnDestroy()
+    {
+        Seq.Kill();
+    }
 }

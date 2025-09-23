@@ -32,7 +32,6 @@ public class SetupPlayer : MonoBehaviour
         yield return new WaitUntil(() => SceneManager.GetActiveScene().buildIndex == 1 &&
                                          GamePlayCtrler.Instance != null);
         GamePlayCtrler.Instance.SetPlayer(currentPlayer.GetComponent<Player>());
-        currentPlayer.SetActive(true);
         Destroy(gameObject);
     }
 }

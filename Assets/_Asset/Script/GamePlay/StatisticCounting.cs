@@ -1,13 +1,14 @@
-using System.Collections;
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class StatisticCounting : MonoBehaviour
 {
     [SerializeField] internal int plusPointEachTime = 1;
     [SerializeField] internal float secondToAddPoint = 0.25f;
-    internal StatisticData statisticData;
+    [SerializeField] internal UnityEvent DoEventWhenPointIcrease;
     internal Action DoWhenPointIcrease;
+    internal StatisticData statisticData;
     internal int PlayerPoint = 0;
     float timeOfAGame;
     int startPoint = 0;
@@ -47,7 +48,8 @@ public class StatisticCounting : MonoBehaviour
     internal void BonusPoint(int bonus)
     {
         PlayerPoint += bonus;
-        DoWhenPointIcrease.Invoke();
+        DoEventWhenPointIcrease?.Invoke();
+        DoWhenPointIcrease?.Invoke();
     }
     void OnEnable()
     {

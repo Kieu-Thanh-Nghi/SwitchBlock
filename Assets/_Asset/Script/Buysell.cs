@@ -1,9 +1,11 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Buysell : MonoBehaviour
 {
     [SerializeField] LoadData data;
+    [SerializeField] UnityEvent DoEventWhenDiamondChange;
     public Action DoWhenDiamondChange;
     public Action DoAfterAD;
     public Action DoAfterPayMoney;
@@ -19,6 +21,7 @@ public class Buysell : MonoBehaviour
         data.playerData.diamond += diamonds;
         if(hasSaved) data.SavePlayerData();
         DoWhenDiamondChange?.Invoke();
+        DoEventWhenDiamondChange?.Invoke();
     }
     public void BuyDiamonds()
     {
