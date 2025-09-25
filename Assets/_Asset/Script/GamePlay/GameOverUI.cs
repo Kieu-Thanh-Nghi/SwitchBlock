@@ -14,6 +14,7 @@ public class GameOverUI : MonoBehaviour
 
     private void OnEnable()
     {
+        GamePlayCtrler.Instance.sound.PlayGameOverSound(true);
         pointLastGame.text = statisticCounting.PlayerPoint.ToString();
         highestPoint.text = statisticCounting.PlayerPoint > statisticCounting.statisticData.HighScore ?
             statisticCounting.PlayerPoint.ToString() : statisticCounting.statisticData.HighScore.ToString();
@@ -28,5 +29,10 @@ public class GameOverUI : MonoBehaviour
             GamePlayCtrler.Instance.RePlay(true);
             reviveTime--;
         }
+    }
+
+    private void OnDisable()
+    {
+        GamePlayCtrler.Instance.sound?.PlayGameOverSound(false);
     }
 }

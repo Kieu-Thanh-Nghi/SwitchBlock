@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class GamePlayCtrler : MonoBehaviour
@@ -7,6 +8,7 @@ public class GamePlayCtrler : MonoBehaviour
     [SerializeField] Buysell buysell;
     [SerializeField] internal LoadData data;
     [SerializeField] StatisticCounting statisticCounting;
+    [SerializeField] internal SoundStore sound;
 
     [SerializeField] internal bool switchState = false;
     [SerializeField] SpriteRenderer backGround;
@@ -77,9 +79,9 @@ public class GamePlayCtrler : MonoBehaviour
     {
         if (player.isImunity) return;
         player.Die();
-        Debug.Log(speedTemp);
+        sound.PlayGameSound(false);
+        sound.PlayDieSound();
         isEnd = true;
-        Debug.Log("endgame");
         GamePlayUI.gameObject.SetActive(false);
         if (totalObstacleHasPass > 0)
         {
@@ -118,6 +120,7 @@ public class GamePlayCtrler : MonoBehaviour
         ObstacleHasPass = 0;
         itemSpawner.isActive = true;
         isEnd = false;
+        sound.PlayGameSound(true);
         StartCoroutine(StartGamePlay(isRivive));
     }
 
@@ -173,6 +176,7 @@ public class GamePlayCtrler : MonoBehaviour
         player = thePlayer;
         playerMovement.player = thePlayer;
         playerMovement.enabled = true;
+        statisticCounting.RestartPoint();
         StartCoroutine(StartGamePlay());
     }
     public void SetDefaultSpeed()
@@ -186,15 +190,19 @@ public class GamePlayCtrler : MonoBehaviour
         {
             case 0:
                 statisticCounting.BonusPoint(bonusPointWhenTakeItem);
+                sound.PlayPlusPoint();
                 break;
             case 1:
                 statisticCounting.BonusPoint(bonusPointWhenTakeDiamonds);
                 buysell.AddDiamonds(numberOfDiamondCanAdd,false);
+                sound.PlayPlusDiamond();
                 break;
             case 2:
                 UseSwitchState();
+                sound.PlaySwitchState();
                 break;
             case 3:
+                sound.PlayExplode();
                 Invoke(nameof(EndTheGame), 0.15f);
                 break;
             case 4:
@@ -220,10 +228,12 @@ public class GamePlayCtrler : MonoBehaviour
         numberOfDiamondCanAdd *= 2;
         bonusPointWhenTakeItem *= 2;
         statisticCounting.plusPointEachTime *= 2;
+        sound.PlayX2AndMagnetSound(true);
         yield return StartCoroutine(countDown.doWhenGot2X(seconds));
         numberOfDiamondCanAdd /= 2;
         bonusPointWhenTakeItem /= 2;
         statisticCounting.plusPointEachTime /= 2;
+        sound.PlayX2AndMagnetSound(false);
     }    
     
     IEnumerator GotRocket(float seconds)
@@ -232,6 +242,7 @@ public class GamePlayCtrler : MonoBehaviour
         rocketSpeedTemp = speedOfObstacle; speedOfObstacle = maxSpeed;
         isNextState = false;
         player.isImunity = true;
+        sound.PlayRocketSound();
         yield return StartCoroutine(countDown.doWhenGotRocket(seconds));
         statisticCounting.secondToAddPoint *= rocketCountSpeedUp;
         speedOfObstacle = rocketSpeedTemp;
@@ -242,8 +253,10 @@ public class GamePlayCtrler : MonoBehaviour
     IEnumerator GotMagnet(float seconds)
     {
         player.magnet.SetActive(true);
+        sound.PlayX2AndMagnetSound(true);
         yield return StartCoroutine(countDown.doWhenGotMagnet(seconds));
         player.magnet.SetActive(false);
+        sound.PlayX2AndMagnetSound(false);
     }
 
     [ContextMenu("switch test")]
@@ -266,5 +279,12 @@ public class GamePlayCtrler : MonoBehaviour
         {
             backGround.color = switchStateBlack;
         }
+    }
+
+    public void BackToMenu()
+    {
+        Destroy(player.gameObject);
+        OutOfGamePlay();
+        SceneManager.LoadScene(0);
     }
 }

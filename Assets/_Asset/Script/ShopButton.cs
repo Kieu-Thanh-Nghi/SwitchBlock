@@ -1,12 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ShopButton : MonoBehaviour
 {
     [SerializeField] SkinStore store;
     [SerializeField] float repeatRate;
     [SerializeField] GameObject currentSkinImage;
+    [SerializeField] UnityEvent doWhenRandomSkin;
     int n;
     Vector3 scale;
     //bool isContinute = true;
@@ -15,7 +15,7 @@ public class ShopButton : MonoBehaviour
     {
         scale = currentSkinImage.transform.localScale;
         n = store.skins.Length;
-        InvokeRepeating(nameof(RandomSkinImage), 0, repeatRate);
+        InvokeRepeating(nameof(RandomSkinImage), 1, repeatRate);
     }
 
     //private void Update()
@@ -40,6 +40,7 @@ public class ShopButton : MonoBehaviour
         newSkinImage.transform.localScale = scale;
         Destroy(currentSkinImage);
         currentSkinImage = newSkinImage;
+        doWhenRandomSkin?.Invoke();
     }
 
     private void OnDisable()

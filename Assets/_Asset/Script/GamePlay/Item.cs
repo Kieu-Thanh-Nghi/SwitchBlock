@@ -5,9 +5,9 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     [SerializeField] ItemSample theItemSample;
+    [SerializeField] Sample sample;
     internal bool isStop;
     ItemSpawner itemSpawner;
-    Sample sample;
 
     internal void SetUpItemSpawner(ItemSpawner itemSpawner)
     {

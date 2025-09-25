@@ -1,21 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
     [SerializeField] Transform fixPosition;
-    Player player;
+    GamePlayCtrler gamePlayCtrler;
 
     private void Start()
     {
-        player = GamePlayCtrler.Instance.player;
+        gamePlayCtrler = GamePlayCtrler.Instance;
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            player.transform.position = fixPosition.position;
+            gamePlayCtrler.sound.PlayDragSound();
         }
     }
 }

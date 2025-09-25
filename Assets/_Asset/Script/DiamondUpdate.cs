@@ -13,7 +13,8 @@ public class DiamondUpdate : MonoBehaviour
 
     private void Start()
     {
-        diamondsUpdate();        
+        diamondsUpdate();
+        //Canvas.ForceUpdateCanvases();
     }
 
     public void diamondsUpdate()

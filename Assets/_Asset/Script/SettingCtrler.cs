@@ -10,4 +10,9 @@ public class SettingCtrler : MonoBehaviour
         int currentSound = PlayerPrefs.GetInt(SoundController.keyName);
         soundIcons.GetChild(currentSound - 1).gameObject.SetActive(true);
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

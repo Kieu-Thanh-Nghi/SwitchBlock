@@ -14,12 +14,6 @@ public class StatisticCounting : MonoBehaviour
     int startPoint = 0;
     float timer;
 
-    private void Awake()
-    {
-        statisticData = GamePlayCtrler.Instance.data.statistics;
-        RestartPoint();
-    }
-
     void StartTimer() => timer = Time.time;
     void StopTimer() => timeOfAGame = Time.time - timer;
 
@@ -38,6 +32,7 @@ public class StatisticCounting : MonoBehaviour
             statisticData.AveragePlayTime.SetTime
                 (statisticData.TotalPlayTime.getTimeSpan() / statisticData.NumberOfSessions);
         }
+        GamePlayCtrler.Instance.data.statistics = statisticData;
         GamePlayCtrler.Instance.data.SaveStatisticsData();
     }
     internal void RestartPoint()
@@ -58,6 +53,7 @@ public class StatisticCounting : MonoBehaviour
 
     void countPoint()
     {
+        statisticData = GamePlayCtrler.Instance.data.statistics;
         PlayerPoint += plusPointEachTime;
         DoWhenPointIcrease.Invoke();
     }
