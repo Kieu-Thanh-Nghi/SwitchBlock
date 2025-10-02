@@ -1,6 +1,7 @@
 using System.IO;
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 public class LoadData : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class LoadData : MonoBehaviour
     [SerializeField] SetupPlayer setupPlayer;
     [SerializeField] internal PlayerData playerData;
     [SerializeField] internal StatisticData statistics;
+    internal int NextRank;
+    internal int ScoreToNextRank;
 
     public static LoadData Instance { get; private set; }
 
@@ -58,6 +61,7 @@ public class LoadData : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         path = Path.Combine(Application.persistentDataPath, "Data.json");
         if (!File.Exists(path))
         {
@@ -83,6 +87,7 @@ public class LoadData : MonoBehaviour
 [Serializable]
 public class StatisticData
 {
+    [SerializeField] internal List<int> Top3Score;
     [SerializeField] internal int HighScore = 0;
     [SerializeField] internal TimeData TotalPlayTime = new();
     [SerializeField] internal TimeData HighestPlayTime = new();

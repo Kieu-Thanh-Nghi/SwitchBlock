@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Purchasing;
 using UnityEngine.Events;
 
 public class Buysell : MonoBehaviour
@@ -9,8 +10,6 @@ public class Buysell : MonoBehaviour
     public Action DoWhenDiamondChange;
     public Action DoAfterAD;
     public Action DoAfterPayMoney;
-    int[] skinPrices = { 0,0,0,0,15000,15000,30000,30000,30000,30000,
-    91000,91000,91000,91000,91000,91000,91000};
 
     public int currentDiamond()
     {
@@ -23,48 +22,76 @@ public class Buysell : MonoBehaviour
         DoWhenDiamondChange?.Invoke();
         DoEventWhenDiamondChange?.Invoke();
     }
-    public void BuyDiamonds()
+    public void BuyDiamonds(string productID)
     {
-        Debug.Log("having more diamonds");
-        AddDiamonds(100);
+        if(productID == "plus2000diamonds")
+        {
+            DoAfterPayMoney += () => AddDiamonds(2000);
+        }
+        else if(productID == "plus500diamonds")
+        {
+            DoAfterPayMoney += () => AddDiamonds(500);
+        }
+        CodelessIAPStoreListener.Instance.InitiatePurchase(productID);
     }
+
     public bool PayWithDiamonds(int diamondsQuantity)
     {
-        if (data.playerData.diamond < diamondsQuantity) return false;
+        if (data.playerData.diamond < diamondsQuantity)
+        {
+            BuyDiamonds("plus500diamonds");
+            return false;
+        }
         AddDiamonds(-diamondsQuantity);
         return true;
-    }
-    public void ShowAchivement()
-    {
-        Debug.Log("showing achivement");
-    }    
-    
-    public void ShowLeaderBoard()
-    {
-        Debug.Log("showing LeaderBoard");
     }
 
     public void RemoveAdd()
     {
-        Debug.Log("removing add");
+        DoAfterPayMoney += doWhenRemoveAD;
+        CodelessIAPStoreListener.Instance.InitiatePurchase("noad");
     }
 
-    public void WatchAD(bool refressAfterDone = false)
+    void doWhenRemoveAD()
     {
-        Debug.Log("Da xem quang cao");
-        DoAfterAD?.Invoke();
+        data.playerData.isNoAd = true;
+        data.SavePlayerData();
+    }
+    public void WatchAD(bool refressAfterDone = false, int AdType = 0)
+    {
+        if (AdType == 0)
+        {
+            AdsManager.Instance.rewardedAds.DoWhenRewardAdComplete = DoAfterAD;
+            AdsManager.Instance.rewardedAds.ShowAd();
+        }
+        else if(AdType == 1){
+            if (data.playerData.isNoAd)
+            {
+                DoAfterAD?.Invoke();
+            }
+            else
+            {
+                AdsManager.Instance.interstitialAd.DoWhenInterstitialAdComplete = DoAfterAD;
+                AdsManager.Instance.interstitialAd.ShowAd();
+            }
+        }
+
         if (refressAfterDone) DoAfterAD = null;
     }
 
-    public void PayMoney(int cost, bool refressAfterDone = false)
+    public void DoAfterCompletedPurchage(bool refressAfterDone = false)
     {
-        Debug.Log("Da tra tien: " + cost + " dong");
         DoAfterPayMoney?.Invoke();
         if (refressAfterDone) DoAfterPayMoney = null;
     }
 
-    public void PayMoneyForSkin(Skin theSkin, bool refressAfterDone = false)
+    public void DoAfterPurchageFail()
     {
-        PayMoney(skinPrices[theSkin.index], refressAfterDone);
+        DoAfterPayMoney = null;
+    }
+
+    public void PayMoneyForSkin(Skin theSkin)
+    {
+        CodelessIAPStoreListener.Instance.InitiatePurchase(theSkin.productID);
     }
 }

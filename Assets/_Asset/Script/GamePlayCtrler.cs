@@ -29,6 +29,7 @@ public class GamePlayCtrler : MonoBehaviour
     float rocketSpeedTemp;
 
     [SerializeField] int ObstacleMustPassForNextState = 27;
+    [SerializeField] int ObstacleMustPassForRevive = 10;
     [SerializeField] float baseObstacleSpeed;
     [SerializeField] float maxSpeed;
     [SerializeField] float speedBonusEachState = 1;
@@ -46,6 +47,7 @@ public class GamePlayCtrler : MonoBehaviour
     bool isEnd = false;
     WaitForSeconds EndTimeDelay = new WaitForSeconds(0.75f);
     internal Action DoWhenGameEnd;
+    int numberOfGame = 0;
 
     public static GamePlayCtrler Instance { get; private set; }
 
@@ -83,19 +85,51 @@ public class GamePlayCtrler : MonoBehaviour
         sound.PlayDieSound();
         isEnd = true;
         GamePlayUI.gameObject.SetActive(false);
-        if (totalObstacleHasPass > 0)
+        if (totalObstacleHasPass > ObstacleMustPassForRevive)
         {
             deActiveSpawners();
-            StartCoroutine(turnOnGameOverUI(ReviveUI));
+            doAfterPlayerDie(true);
         }
         else
         {
             DoWhenGameEnd?.Invoke();
             deActiveSpawners();
-            StartCoroutine(turnOnGameOverUI(EndGameUI));
+            doAfterPlayerDie(false);
         }
+
     }
 
+    void doAfterPlayerDie(bool isRevive)
+    {
+        numberOfGame++;
+        Action func;
+        if (isRevive)
+        {
+            func = turnOnRevive;
+        }
+        else
+        {
+            func = turnOnGameOver;
+
+        }
+        if (numberOfGame > 3)
+        {
+            numberOfGame = 0;
+            buysell.DoAfterAD += func;
+            buysell.WatchAD(true,1);
+        }
+        else
+        {
+            func?.Invoke();
+        }
+    }
+    public void WatchAdRevive()
+    {
+        buysell.DoAfterAD += Revive;
+        buysell.WatchAD(true, 0);
+    }
+    void turnOnGameOver() => StartCoroutine(turnOnGameOverUI(EndGameUI));
+    void turnOnRevive() => StartCoroutine(turnOnGameOverUI(ReviveUI));
     IEnumerator turnOnGameOverUI(GameObject UI)
     {
         yield return EndTimeDelay;

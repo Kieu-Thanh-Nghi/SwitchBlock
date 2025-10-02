@@ -9,6 +9,10 @@ public class AttractedSample : Sample
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
+        if (collision.CompareTag("ItemSpawner"))
+        {
+            CancelInvoke();
+        }
         if (collision.CompareTag("Magnet"))
         {
             item.isStop = true;

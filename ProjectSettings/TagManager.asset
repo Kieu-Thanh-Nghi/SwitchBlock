@@ -9,6 +9,7 @@ TagManager:
   - ChangeStateObstacle
   - EndGame
   - Magnet
+  - ItemSpawner
   layers:
   - Default
   - TransparentFX

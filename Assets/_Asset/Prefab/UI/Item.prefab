@@ -349,7 +349,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -20.70726, y: 10.8852}
+  m_AnchoredPosition: {x: -20.707245, y: 10.8852}
   m_SizeDelta: {x: 40.6043, y: 65.3361}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9015023516977658092
@@ -1116,6 +1116,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skinState: 1
   index: 0
+  priceText: {fileID: 6970727368206850166}
+  productID: 
 --- !u!1 &4944268496087438855
 GameObject:
   m_ObjectHideFlags: 0

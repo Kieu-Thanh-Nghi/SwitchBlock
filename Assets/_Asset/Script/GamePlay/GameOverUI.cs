@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class GameOverUI : MonoBehaviour
 {
+    [SerializeField] GameObject gameplayUI;
     [SerializeField] Buysell buysell;
     [SerializeField] StatisticCounting statisticCounting;
     [SerializeField] int diamondForRevive = 100;
@@ -28,8 +29,13 @@ public class GameOverUI : MonoBehaviour
         {
             GamePlayCtrler.Instance.RePlay(true);
             reviveTime--;
+            gameplayUI.SetActive(true);
+            gameObject.SetActive(false);
         }
     }
+
+    public void BuyDiamonds() => buysell.BuyDiamonds("plus500diamonds");
+    public void RemoveAD() => buysell.RemoveAdd();
 
     private void OnDisable()
     {

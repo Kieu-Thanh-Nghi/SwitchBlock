@@ -1,14 +1,24 @@
 using UnityEngine;
+using UnityEngine.Purchasing;
+using TMPro;
 
 public class Skin : MonoBehaviour
 {
     [SerializeField] internal int skinState; //0.active 1.owned 2.WatchAD 3.PayMoney
     [SerializeField] internal int index;
+    [SerializeField] TMP_Text priceText;
+    [SerializeField] internal string productID;
     SkinStore store;
 
     public void setStore(SkinStore theStore)
     {
         store = theStore;
+    }
+
+    internal void fetchProduct()
+    {
+        if (productID == "") return;
+        priceText.text = CodelessIAPStoreListener.Instance.GetProduct(productID).metadata.localizedPriceString;
     }
     public void SetupState(int theState, bool setNew = false)
     {

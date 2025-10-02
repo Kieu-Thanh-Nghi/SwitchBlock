@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.IO;
 using System;
 using UnityEngine;
-using System.Collections;
 
 public class SkinStore : MonoBehaviour
 {
@@ -38,6 +37,14 @@ public class SkinStore : MonoBehaviour
         File.WriteAllText(path, skinDataJson);
     }
 
+    private void Awake()
+    {
+        foreach (var skin in skins)
+        {
+            skin.fetchProduct();
+        }
+    }
+
     public void config()
     {
         string skinDataJson = File.ReadAllText(path);
@@ -67,7 +74,7 @@ public class SkinStore : MonoBehaviour
                 break;
             case 3:
                 buysell.DoAfterPayMoney += DoAfter;
-                buysell.PayMoneyForSkin(theSkin, true);
+                buysell.PayMoneyForSkin(theSkin);
                 break;
         }
     }

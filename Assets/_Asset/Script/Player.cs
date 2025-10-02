@@ -30,8 +30,9 @@ public class Player : MonoBehaviour
         skinImage = theSkin.GetComponentInChildren<SkinImage>();
         skinImage.transform.localScale = Vector3.one;
         skinSprite = skinImage.GetComponent<SpriteRenderer>();
-        changeParticleColor(particleSystem, skin.colorWhenWhiteGround);
-        changeParticleColor(particleWhenDiePrefab, skin.colorWhenWhiteGround);
+        switchSkinImage(false);
+        changeParticleColor(particleSystem, skin.colorWhenBlackGround);
+        changeParticleColor(particleWhenDiePrefab, skin.colorWhenBlackGround);
     }
 
     internal Color GetParticleColor()
@@ -91,6 +92,7 @@ public class Player : MonoBehaviour
         Color tempColor;
         if (isBlack) tempColor = skin.colorWhenWhiteGround;
         else tempColor = skin.colorWhenBlackGround;
+        Debug.Log(isBlack);
         changeParticleColor(particleSystem, tempColor);
     }
 

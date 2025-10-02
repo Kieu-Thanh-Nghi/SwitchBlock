@@ -56,6 +56,8 @@ public class GamePlayUICtrler : MonoBehaviour
     void pointUpdate()
     {
         point.text = statisticCounting.PlayerPoint.ToString();
+        rank.text = statisticCounting.nextRank.ToString();
+        pointToHighRank.text = statisticCounting.pointToNextRank.ToString();
     }
 
     internal void SwitchUIColor(bool isBlack)
