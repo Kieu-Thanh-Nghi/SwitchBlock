@@ -169,11 +169,13 @@ public class GamePlayCtrler : MonoBehaviour
         data.SavePlayerData();
         statisticCounting.SaveStatistic();
         statisticCounting.RestartPoint();
+        AchivementManager.Instance.DoDeathsBestFriendAchivement();
         RePlay();
     }
 
     internal void OutOfGamePlay()
     {
+        AchivementManager.Instance.DoDeathsBestFriendAchivement();
         data.SavePlayerData();
         statisticCounting.SaveStatistic();
     }
@@ -240,6 +242,7 @@ public class GamePlayCtrler : MonoBehaviour
                 Invoke(nameof(EndTheGame), 0.15f);
                 break;
             case 4:
+                AchivementManager.Instance.DoMagneticAchivement();
                 float MagnetCountTime = data.playerData.magnet.effDuration;
                 if (!countDown.isMagnetCounting(MagnetCountTime))
                     StartCoroutine(GotMagnet(MagnetCountTime));

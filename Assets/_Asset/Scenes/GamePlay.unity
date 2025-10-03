@@ -894,6 +894,7 @@ GameObject:
   - component: {fileID: 584097036}
   - component: {fileID: 584097037}
   - component: {fileID: 584097038}
+  - component: {fileID: 584097039}
   m_Layer: 0
   m_Name: GameplayContrler
   m_TagString: Untagged
@@ -1114,6 +1115,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leaderboardID: CgkI1cabzr0fEAIQAg
+--- !u!114 &584097039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584097031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2290bcdae904fc49b68cb337bbc6410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &626633327
 GameObject:
   m_ObjectHideFlags: 0
@@ -1605,7 +1618,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f7e4c8ac4c583454bab4bd5276aaf602, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0eb2590fbb350c94d91d32171bfd3a54, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

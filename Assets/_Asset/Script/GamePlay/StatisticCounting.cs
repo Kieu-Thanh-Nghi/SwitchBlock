@@ -15,13 +15,29 @@ public class StatisticCounting : MonoBehaviour
     int startPoint = 0;
     float timer;
     int topScoresCount;
+    bool isRevive;
 
-    void StartTimer() => timer = Time.time;
-    void StopTimer() => timeOfAGame = Time.time - timer;
-
+    void StartTimer()
+    {
+        isRevive = false;
+        timer = Time.time;
+    }
+    void StopTimer()
+    {
+        if (!isRevive)
+        {
+            timeOfAGame = Time.time - timer;
+            isRevive = true;
+        }
+        else
+        {
+            timeOfAGame = Time.time - timeOfAGame;
+        }
+    }
     internal void SaveStatistic()
     {
         TimeSpan gameTimeSpan = TimeSpan.FromSeconds(timeOfAGame);
+        AchivementManager.Instance.DoSurviorAchivement(timeOfAGame);
         if (PlayerPoint > statisticData.HighScore) { 
             statisticData.HighScore = PlayerPoint;
             leaderboard.ReportScore(PlayerPoint);
@@ -44,6 +60,7 @@ public class StatisticCounting : MonoBehaviour
     {
         PlayerPoint = startPoint;
         enabled = true;
+        AchivementManager.Instance.DoVeteranAchivement();
         StartTimer();
     }
 

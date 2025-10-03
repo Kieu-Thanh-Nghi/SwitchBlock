@@ -24,7 +24,12 @@
 
 public static class GPGSIds
 {
+        public const string achievement_veteran_i = "CgkI4dLQ4Y4REAIQBA"; // <GPGSID>
+        public const string achievement_deaths_best_friend = "CgkI4dLQ4Y4REAIQAg"; // <GPGSID>
+        public const string achievement_currious_cat = "CgkI4dLQ4Y4REAIQBQ"; // <GPGSID>
         public const string leaderboard_highest_score = "CgkI4dLQ4Y4REAIQAQ"; // <GPGSID>
+        public const string achievement_magnetic_i = "CgkI4dLQ4Y4REAIQAw"; // <GPGSID>
+        public const string achievement_survivor_i = "CgkI4dLQ4Y4REAIQBg"; // <GPGSID>
 
 }
 

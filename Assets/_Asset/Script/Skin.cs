@@ -19,6 +19,7 @@ public class Skin : MonoBehaviour
     {
         if (productID == "") return;
         priceText.text = CodelessIAPStoreListener.Instance.GetProduct(productID).metadata.localizedPriceString;
+        Debug.Log(priceText.text);
     }
     public void SetupState(int theState, bool setNew = false)
     {

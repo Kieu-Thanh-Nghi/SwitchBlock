@@ -21,6 +21,7 @@ public class LoadingMenu : MonoBehaviour
 
     public void logIn()
     {
+        PlayGamesPlatform.Activate();
         PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
     }
 

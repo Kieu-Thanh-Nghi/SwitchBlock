@@ -11230,7 +11230,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 116, y: 1282.7205}
-  m_SizeDelta: {x: 0, y: 185.4407}
+  m_SizeDelta: {x: 445.67, y: 185.4407}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &925734758
 MonoBehaviour:
@@ -12519,6 +12519,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a6fb3abe2ba83242ba33723247b7bc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1086790598
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1086790600}
+  - component: {fileID: 1086790599}
+  m_Layer: 0
+  m_Name: Achivement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1086790599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086790598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2290bcdae904fc49b68cb337bbc6410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1086790600
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086790598}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.2581996, y: 0.77280045, z: 33.227623}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1102923357
 GameObject:
   m_ObjectHideFlags: 0
@@ -13017,6 +13061,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1086790599}
+        m_TargetAssemblyTypeName: AchivementManager, Assembly-CSharp
+        m_MethodName: UnlockCurriusCatAchivement
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -20887,7 +20943,7 @@ PrefabInstance:
     - target: {fileID: 7912186568055151019, guid: fd4df228e8b586340af2b50c8c0a6bd0, type: 3}
       propertyPath: currencyText
       value: 
-      objectReference: {fileID: 1634415720}
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: fd4df228e8b586340af2b50c8c0a6bd0, type: 3}
@@ -20896,17 +20952,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4944268496075920885, guid: fd4df228e8b586340af2b50c8c0a6bd0, type: 3}
   m_PrefabInstance: {fileID: 1634415718}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1634415720 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2646695451387752353, guid: fd4df228e8b586340af2b50c8c0a6bd0, type: 3}
-  m_PrefabInstance: {fileID: 1634415718}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1657273342
 GameObject:
   m_ObjectHideFlags: 0
@@ -23485,7 +23530,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2096287970
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24572,9 +24617,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1769862871}
-        m_TargetAssemblyTypeName: Buysell, Assembly-CSharp
-        m_MethodName: ShowAchivement
+      - m_Target: {fileID: 1086790599}
+        m_TargetAssemblyTypeName: AchivementManager, Assembly-CSharp
+        m_MethodName: ShowAchivementUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -25763,7 +25808,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176999140598289635, guid: 6695665deac9dfe46b09a38340e73e5e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 218.2
       objectReference: {fileID: 0}
     - target: {fileID: 2176999140598289635, guid: 6695665deac9dfe46b09a38340e73e5e, type: 3}
       propertyPath: m_SizeDelta.y
@@ -26178,6 +26223,10 @@ PrefabInstance:
     - target: {fileID: 826624476301806412, guid: fd4df228e8b586340af2b50c8c0a6bd0, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1279627322032326815, guid: fd4df228e8b586340af2b50c8c0a6bd0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2014657751004993532, guid: fd4df228e8b586340af2b50c8c0a6bd0, type: 3}
       propertyPath: m_IsActive
