@@ -10,6 +10,7 @@ public class LoadingMenu : MonoBehaviour
 
     private void Start()
     {
+        Application.targetFrameRate = 60;
         Invoke(nameof(LoadMenu), 0.5f);
         logIn();
     }

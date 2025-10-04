@@ -11,8 +11,13 @@ public class SoundStore : MonoBehaviour
 
     internal void PlayPlusDiamond() => diamond?.Play();
 
-    internal void PlayDragSound()
+    internal void PlayDragSound(bool isStop = false)
     {
+        if (isStop)
+        {
+            dragSound?.Stop();
+            return;
+        }
         if (!dragSound.isPlaying)
         {
             dragSound?.Play();

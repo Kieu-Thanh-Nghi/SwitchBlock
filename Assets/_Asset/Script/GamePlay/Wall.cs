@@ -16,4 +16,12 @@ public class Wall : MonoBehaviour
             gamePlayCtrler.sound.PlayDragSound();
         }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            gamePlayCtrler.sound.PlayDragSound(true);
+        }
+    }
 }

@@ -30,16 +30,12 @@ public class PlayerMovement : MonoBehaviour
         halfWidth = player.skinSprite.bounds.extents.x;
         min.x += halfWidth; max.x -= halfWidth;
     }
-
-    private void Update()
+    private void FixedUpdate()
     {
         if (Input.GetMouseButtonDown(0))
         {
             position = cam.ScreenToWorldPoint(Input.mousePosition);
-        }
-    }
-    private void FixedUpdate()
-    {
+        }        
         if (Input.GetMouseButton(0))
         {
             deltaPos = cam.ScreenToWorldPoint(Input.mousePosition) - position;
