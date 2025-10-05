@@ -3,9 +3,12 @@ using UnityEngine;
 
 public class TweenSlideIn : MonoBehaviour
 {
-    [SerializeField] Vector2 firstPos, lastPos;
+    [SerializeField] float first_pos_X;
+    Vector2 firstPos, lastPos;
     private void OnEnable()
     {
+        lastPos = transform.localPosition;
+        firstPos = new Vector2(lastPos.x + first_pos_X, lastPos.y);
         transform.localPosition = firstPos;
         transform.DOLocalMove(lastPos, 1);
     }
