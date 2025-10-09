@@ -7550,7 +7550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44691b91a55551242ac1ee63a6ca9664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isImunity: 0
+  isImunity: 1
   particleSystem: {fileID: 345605249}
   particleWhenDiePrefab: {fileID: 1256040421098668171, guid: 28a9768b0cbca244f9e832596c78949b, type: 3}
   spriteMask: {fileID: 1388400699}
@@ -8508,7 +8508,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &556396718
 Transform:
   m_ObjectHideFlags: 0
@@ -10251,7 +10251,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -84.65, y: 3.42}
+  m_AnchoredPosition: {x: -84.65001, y: 3.42}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &798708673
@@ -11470,7 +11470,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 65, y: 722.7}
-  m_SizeDelta: {x: 0, y: 185.4407}
+  m_SizeDelta: {x: 248.4, y: 185.4407}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &925734758
 MonoBehaviour:
@@ -23852,7 +23852,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2096287970
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26158,7 +26158,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176999140598289635, guid: 6695665deac9dfe46b09a38340e73e5e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 100.479996
       objectReference: {fileID: 0}
     - target: {fileID: 2176999140598289635, guid: 6695665deac9dfe46b09a38340e73e5e, type: 3}
       propertyPath: m_SizeDelta.y
@@ -26511,7 +26511,7 @@ PrefabInstance:
       objectReference: {fileID: 564075353}
     - target: {fileID: 4924260181076505210, guid: 11ba754537cce4346aeace20a11fd620, type: 3}
       propertyPath: playerData.diamond
-      value: 5000
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4924260181076505211, guid: 11ba754537cce4346aeace20a11fd620, type: 3}
       propertyPath: m_RootOrder

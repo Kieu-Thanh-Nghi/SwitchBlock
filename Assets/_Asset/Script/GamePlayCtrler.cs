@@ -8,6 +8,7 @@ public class GamePlayCtrler : MonoBehaviour
     [SerializeField] Buysell buysell;
     [SerializeField] internal LoadData data;
     [SerializeField] StatisticCounting statisticCounting;
+    [SerializeField] FitTheScreen screenSizeConfig;
     [SerializeField] internal SoundStore sound;
 
     [SerializeField] internal bool switchState = false;
@@ -210,6 +211,7 @@ public class GamePlayCtrler : MonoBehaviour
     internal void SetPlayer(Player thePlayer)
     {
         player = thePlayer;
+        screenSizeConfig.SetPlayerScale(thePlayer.transform);
         playerMovement.player = thePlayer;
         playerMovement.enabled = true;
         statisticCounting.RestartPoint();

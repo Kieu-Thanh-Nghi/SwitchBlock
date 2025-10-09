@@ -30,18 +30,23 @@ public class PlayerMovement : MonoBehaviour
         halfWidth = player.skinSprite.bounds.extents.x;
         min.x += halfWidth; max.x -= halfWidth;
     }
-    private void FixedUpdate()
+
+    private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
             position = cam.ScreenToWorldPoint(Input.mousePosition);
-        }        
+            return;
+        }
         if (Input.GetMouseButton(0))
         {
             deltaPos = cam.ScreenToWorldPoint(Input.mousePosition) - position;
             position = cam.ScreenToWorldPoint(Input.mousePosition);
         }
-        if(player != null) player.transform.position += new Vector3(deltaPos.x, 0,0);
+    }
+    private void FixedUpdate()
+    {
+        if (player != null) player.transform.position += new Vector3(deltaPos.x, 0, 0);
         deltaPos = Vector3.zero;
         keepPlayerOnScreen();
     }

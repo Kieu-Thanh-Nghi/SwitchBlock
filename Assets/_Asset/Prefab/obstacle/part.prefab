@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2284138566444954995}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2284138567597248325}
   - component: {fileID: 2284138567597248324}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 2284138568033911881}
   - component: {fileID: 1164630138372427682}
   - component: {fileID: 7889249659561113539}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: part
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -812,7 +812,7 @@ GameObject:
   - component: {fileID: 467945590}
   - component: {fileID: 467945591}
   - component: {fileID: 467945593}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -917,6 +917,7 @@ MonoBehaviour:
   buysell: {fileID: 584097036}
   data: {fileID: 825057967}
   statisticCounting: {fileID: 584097034}
+  screenSizeConfig: {fileID: 1605268451}
   sound: {fileID: 638077954}
   switchState: 0
   backGround: {fileID: 1605268449}
@@ -1136,7 +1137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 626633328}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1185,7 +1186,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &638077953
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3020,7 +3021,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 726626408}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8049,7 +8050,7 @@ GameObject:
   - component: {fileID: 1187586145}
   - component: {fileID: 1187586146}
   - component: {fileID: 1187586148}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8405,7 +8406,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2135908477}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8913,6 +8914,82 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1605268450}
     m_Modifications:
+    - target: {fileID: 3005850078766137360, guid: 851478aae6d04144a84418b0b6aec4fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005850080313899554, guid: 851478aae6d04144a84418b0b6aec4fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005850080415150374, guid: 851478aae6d04144a84418b0b6aec4fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5304703606157958145, guid: 851478aae6d04144a84418b0b6aec4fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5304703606594623237, guid: 851478aae6d04144a84418b0b6aec4fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5304703608008110300, guid: 851478aae6d04144a84418b0b6aec4fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5304703608210105907, guid: 851478aae6d04144a84418b0b6aec4fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6209606539855028244, guid: 851478aae6d04144a84418b0b6aec4fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6209606540041928375, guid: 851478aae6d04144a84418b0b6aec4fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6209606540399334231, guid: 851478aae6d04144a84418b0b6aec4fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6209606540620694334, guid: 851478aae6d04144a84418b0b6aec4fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6209606540889367137, guid: 851478aae6d04144a84418b0b6aec4fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6209606541104675084, guid: 851478aae6d04144a84418b0b6aec4fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6209606541204877832, guid: 851478aae6d04144a84418b0b6aec4fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6209606541393144165, guid: 851478aae6d04144a84418b0b6aec4fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6209606541429346594, guid: 851478aae6d04144a84418b0b6aec4fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6209606541649301377, guid: 851478aae6d04144a84418b0b6aec4fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6209606541750551685, guid: 851478aae6d04144a84418b0b6aec4fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6209606541933255206, guid: 851478aae6d04144a84418b0b6aec4fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7659464145136058786, guid: 851478aae6d04144a84418b0b6aec4fc, type: 3}
       propertyPath: m_Name
       value: Obstacle spawn point
