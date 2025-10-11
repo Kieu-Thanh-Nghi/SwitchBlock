@@ -7550,7 +7550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44691b91a55551242ac1ee63a6ca9664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isImunity: 1
+  isImunity: 0
   particleSystem: {fileID: 345605249}
   particleWhenDiePrefab: {fileID: 1256040421098668171, guid: 28a9768b0cbca244f9e832596c78949b, type: 3}
   spriteMask: {fileID: 1388400699}
@@ -8508,7 +8508,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &556396718
 Transform:
   m_ObjectHideFlags: 0
@@ -11419,7 +11419,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: f4c6e53db23f4fb4c8b01597bdde945f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5247cf3be4139b74a8a591c5d316c6e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -11861,7 +11861,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 1.77771, y: -27.999817}
+  m_AnchoredPosition: {x: 1.77771, y: -27.999756}
   m_SizeDelta: {x: -1920, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &943490647

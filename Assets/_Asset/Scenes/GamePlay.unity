@@ -1186,7 +1186,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &638077953
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3066,6 +3066,10 @@ PrefabInstance:
     - target: {fileID: 4924260181076505200, guid: 11ba754537cce4346aeace20a11fd620, type: 3}
       propertyPath: m_Name
       value: Data
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924260181076505210, guid: 11ba754537cce4346aeace20a11fd620, type: 3}
+      propertyPath: playerData.diamond
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4924260181076505211, guid: 11ba754537cce4346aeace20a11fd620, type: 3}
       propertyPath: m_RootOrder
